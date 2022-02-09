@@ -19,11 +19,12 @@ export default function TabbedContent({ tabbedContent }: {
   
     return(
         <>
-            <div className='flex flex-1 flex-wrap justify-between'>
+            <div className='flex flex-1 flex-wrap text-lg gap-x-8 gap-y-4'>
                 {tabbedContent && Object.keys(tabbedContent).map((tabTitle: string, i: number) => 
                     <a 
+                    key={`tabbedContent-link-${tabTitle}-${i}`}
                     className={classNames(
-                        'relative mx-2 mb-4 pb-1 block whitespace-nowrap',
+                        'relative block whitespace-nowrap',
                         'hover:cursor-pointer hover:text-vibrant-red hover:after:w-full hover:after:bg-red-700\
                         after:transition-width after:ease-out after:duration-300 after:absolute after:h-0.5 after:-bottom-0.5 after:left-0', 
                         (selected === tabTitle ? 
@@ -37,17 +38,22 @@ export default function TabbedContent({ tabbedContent }: {
                 )}
             </div>
             <div className='mt-4 grid grid-cols-1 '>
-                {tabbedContent && Object.entries(tabbedContent).map(([tabTitle, list]) => {
+                {tabbedContent && Object.entries(tabbedContent).map(([tabTitle, list], i) => {
                     return(
-                        <div className={classNames(
+                        <div 
+                        key={`tabbedContent-content-${tabTitle}-${i}`}
+                        className={classNames(
                             'transition-opacity duration-500 ease-in col-start-1 row-start-1 space-y-3',
                             selected === tabTitle ? 'opacity-100': 'opacity-0 invisible'
                         )}>
-                            {list && list.map(({ title, short, description }) => 
-                                <p className='text-base'>
+                            {list && list.map(({ title, short, description }, z) => 
+                                <p 
+                                key={`tabbedContent-content-p-${tabTitle}-${i}-${z}`}
+                                className='text-base'
+                                >
                                     <strong className="font-medium">{title}</strong> - {short}
                                     <br/>
-                                    <p>{description}</p>
+                                    {description}
                                 </p>
                             )}
                         </div>

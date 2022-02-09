@@ -27,12 +27,14 @@ export default function TextCarousell({ timeout, selections, before='', after=''
               className
           )}>{before}</p>
           {selections && selections.map((selection, i) => 
-              <>
+              <span 
+              key={`transition-${selection}-${i}`}
+              className='grid grid-cols-1 col-start-2 row-start-1'
+              >
                   <Transition
-                  key={`transition-${selection}-${i}`}
                   as='p'
                   className={classNames(
-                    'col-start-2 row-start-1 inline-block',
+                    'col-start-1 row-start-1 inline-block',
                     className
                   )}
                   show={i === selected}
@@ -45,11 +47,12 @@ export default function TextCarousell({ timeout, selections, before='', after=''
                   >
                       {selection}
                   </Transition>
-                  <p key={`p-${selection}-${i}`} className={classNames(
-                      'col-start-2 row-start-1 invisible',
+                  <p 
+                  className={classNames(
+                      'col-start-1 row-start-1 invisible',
                       className
                   )}>{selection}</p>
-              </>
+              </span>
           )}
           <p className='col-start-3 row-start-1'>{after}</p>
       </div>

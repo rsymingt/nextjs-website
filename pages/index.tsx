@@ -8,7 +8,7 @@ import { Transition } from '@headlessui/react';
 import Layout from '../components/layout';
 import classNames from 'classnames';
 
-import aboutData from '../data/about.json';
+import aboutData from '../data/about';
 import TabbedContent from '../components/tabbed-content';
 import Section from '../components/section';
 import TextCarousell from '../components/text-carousell';
@@ -166,7 +166,10 @@ function About({ id, handleScroll }: {
                 <div className="flex flex-1 flex-col">
                     <h1 className='text-center'>About Me</h1>
                     <p className='mt-4 mb-6 text-lg'>
-                        I'm hardworking and attentive software developer who thrives when working on individual problems or aspects of a project and actively take a step back to view the project at higher level to find better solutions and possible future problems. 
+                        It's been nearly 10 years since devoting myself to studying programming.
+                        I've collaborated with very talented people to build Full-Stack MERN Applications and Python/NodeJS Microservices for internal and external use.
+                        I'm familiar with utilizing the DevOps lifecycle to continuously deploy reliable code with traceable monitoring.
+                        I'm quietly confident, always seeking a challenge, and constantly working to improve and grow my skills and knowledge.
                     </p>
                     <TabbedContent tabbedContent={aboutData.tabbedContent}/>
                 </div>
@@ -197,9 +200,11 @@ function Portfolio({ id, handleScroll }: {
             <div className='container px-9 w-full flex flex-col items-center justify-center'>
                 <h1 className='mb-4'>Portfolio</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
-                    {portfolioData.projects.map(({ title, description, banner }) => {
+                    {portfolioData.projects.map(({ title, description, banner }, i) => {
                         return(
-                            <div className={classNames(
+                            <div 
+                            key={`portfolio-${i}`}
+                            className={classNames(
                                 'relative grid grid-cols-1 grid-rows-2',
                                 'w-72 h-80 sm:w-72 sm:h-72 rounded-xl bg-neutral-900',
                                 'transition-transform duration-300 ease-in-out hover:scale-110',
@@ -306,7 +311,7 @@ const ContactInput = forwardRef<HTMLInputElement, ContactInput>(({ type, placeho
         <input 
         ref={ref}
         className={classNames(
-            'rounded-md border-2 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
+            'w-full sm:w-auto rounded-md border-2 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
             'transition-all focus:border-neutral-500 focus:scale-105'
         )}
         name={name}
@@ -330,7 +335,7 @@ const ContactTextArea = forwardRef<HTMLTextAreaElement, ContactInput>(({ placeho
         <textarea
         ref={ref}
         className={classNames(
-            'rounded-md border-2 h-32 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
+            'w-full sm:w-auto rounded-md border-2 h-32 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
             'transition-all focus:border-neutral-500 focus:scale-105'
         )}
         name={name}

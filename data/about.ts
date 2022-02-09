@@ -1,4 +1,4 @@
-{
+export default {
     "tabbedContent": {
         "Main Skills": [
             {
@@ -17,13 +17,13 @@
                 "description": "Implement interactive and asynchronous UI"
             }
         ],
-        "Projects & Awards": [
-            {
-                "title": "Junior Canada Computing Competition",
-                "short": "First Place",
-                "description": "2014 - 2015"
-            }
-        ],
+        // "Projects & Awards": [
+        //     {
+        //         "title": "Junior Canada Computing Competition",
+        //         "short": "First Place",
+        //         "description": "2014 - 2015"
+        //     }
+        // ],
         "Experience": [
             {
                 "title": "Junior Developer",
@@ -41,11 +41,23 @@
                 "description": "2018 - 2020"
             }
         ],
-        "Education & Certification": [
+        // "Education & Certification": [
+        //     {
+        //         "title": "BHC.CS-Math",
+        //         "short": "University of Guelph",
+        //         "description": "2015-2019"
+        //     },
+        // ],
+        "Education & Awards": [
             {
                 "title": "BHC.CS-Math",
                 "short": "University of Guelph",
                 "description": "2015-2019"
+            },
+            {
+                "title": "Junior CCC",
+                "short": "First Place",
+                "description": "2014 - 2015"
             }
         ]
     }
