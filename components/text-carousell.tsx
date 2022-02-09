@@ -20,15 +20,20 @@ export default function TextCarousell({ timeout, selections, before='', after=''
 
   return(
       <div className={classNames(
-          className,
           'grid auto-cols-max',
       )}>
-          <p className='col-start-1 row-start-1'>{before}</p>
+          <p className={classNames(
+              'col-start-1 row-start-1',
+              className
+          )}>{before}</p>
           {selections && selections.map((selection, i) => 
               <>
                   <Transition
                   as='p'
-                  className='col-start-2 row-start-1 inline-block'
+                  className={classNames(
+                    'col-start-2 row-start-1 inline-block',
+                    className
+                  )}
                   show={i === selected}
                   enter='transition-all duration-500 ease-out'
                   enterFrom='opacity-0 translate-y-full'
@@ -39,7 +44,10 @@ export default function TextCarousell({ timeout, selections, before='', after=''
                   >
                       {selection}
                   </Transition>
-                  <p className='col-start-2 row-start-1 invisible'>{selection}</p>
+                  <p className={classNames(
+                      'col-start-2 row-start-1 invisible',
+                      className
+                  )}>{selection}</p>
               </>
           )}
           <p className='col-start-3 row-start-1'>{after}</p>

@@ -25,19 +25,24 @@ a {
 
 .section {
   min-height: calc(100vh + 64px);
+  /* max-height: calc(100vh + 64px); */
   @apply items-center justify-between max-w-full;
 }
 
 .section:nth-child(even) {
-  @apply bg-neutral-900 text-lg text-zinc-400 font-light
+  @apply bg-neutral-900
 }
 
 .section:nth-child(odd) {
-  @apply bg-black text-white
+  @apply bg-black
 }
 
 * {
   @apply font-montserrat
+}
+
+p {
+  @apply text-zinc-400 font-light
 }
 
 h1 {
@@ -54,4 +59,11 @@ h3 {
 
 h4 {
   @apply text-base sm:leading-snug sm:text-xl md:leading-snug md:text-2xl font-bold text-white;
+}
+
+.intro-image {
+  object-fit: cover;
+  background: #eb01a5;
+  background-image: url("/intro/me.jpg"); /* fallback */
+  background-image: url("/intro/me.jpg"), linear-gradient(#eb01a5, #d13531); /* W3C */
 }

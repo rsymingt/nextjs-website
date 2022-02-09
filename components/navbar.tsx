@@ -1,15 +1,13 @@
 import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import Image from 'next/image'
+import classNames from 'classnames'
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
+import LinkedInIcon from '../public/linkedin.svg';
+import GithubIcon from '../public/github.svg';
 
-export type Navigation = Array<{
-    name: string, 
-    href: string, 
-}> 
+import config from '../data/global';
 
 export default function Navbar({ navigation, onNavClick, current }: {
     navigation: Navigation,
@@ -33,7 +31,7 @@ export default function Navbar({ navigation, onNavClick, current }: {
 
     return(
         <Disclosure as="nav" className={classNames(
-            "transition-all duration-300 fixed inset-x-0 z-10 bg-neutral-900",
+            "transition-all duration-300 fixed inset-x-0 z-50 bg-neutral-900",
             scrollPosition ? '': 'bg-opacity-0' // 0
         )}>
             {({ open }) => (
@@ -87,17 +85,39 @@ export default function Navbar({ navigation, onNavClick, current }: {
                         </div>
                     </div>
                     </div>
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <button
+                    <div className="absolute inset-y-0 right-0 flex items-center space-x-2 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-10">
+                        <a 
+                        className={classNames(
+                            'p-2',
+                            'transition-all duration-300',
+                            'hover:text-white  fill-zinc-400 hover:fill-white hover:-translate-y-0.5'
+                        )}
+                        href={config.linkedinURL} 
+                        target='_blank'
+                        >
+                            <LinkedInIcon className='h-4 w-4'/>
+                        </a>
+                        <a 
+                        className={classNames(
+                            'p-2',
+                            'transition-all duration-300',
+                            'hover:text-white  fill-zinc-400 hover:fill-white hover:-translate-y-0.5'
+                        )}
+                        href={config.githubURL} 
+                        target='_blank'
+                        >
+                            <GithubIcon className='h-4 w-4'/>
+                        </a>
+                    {/* <button
                         type="button"
                         className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                     >
                         <span className="sr-only">View notifications</span>
                         <BellIcon className="h-6 w-6" aria-hidden="true" />
-                    </button>
+                    </button> */}
 
                     {/* Profile dropdown */}
-                    <Menu as="div" className="ml-3 relative">
+                    {/* <Menu as="div" className="ml-3 relative">
                         <div>
                         <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                             <span className="sr-only">Open user menu</span>
@@ -150,7 +170,7 @@ export default function Navbar({ navigation, onNavClick, current }: {
                             </Menu.Item>
                         </Menu.Items>
                         </Transition>
-                    </Menu>
+                    </Menu> */}
                     </div>
                 </div>
                 </div>
@@ -178,3 +198,8 @@ export default function Navbar({ navigation, onNavClick, current }: {
         </Disclosure>
     )
 }
+
+export type Navigation = Array<{
+    name: string, 
+    href: string, 
+}> 
