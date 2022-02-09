@@ -67,7 +67,7 @@ const Home: NextPage = () => {
     return (
         <div>
             <Head>
-            <title>Create Next App</title>
+            <title>Software Developer | Ryan Symington</title>
             </Head>
             <Navbar onNavClick={handleNavbarClick} current={navSelected} navigation={navigation}/>
             <div className=''>
@@ -260,7 +260,7 @@ function Contact({ id, handleScroll }: {
             subjectRef.current?.value,
             textAreaRef.current?.value,
         ]
-        
+
     }
 
     useEffect(() => {
