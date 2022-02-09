@@ -223,7 +223,8 @@ function Portfolio({ id, handleScroll }: {
                                     className={classNames(
                                         'absolute inset-0 bg-gradient-to-b from-vibrant-red opacity-0 rounded-xl',
                                         'transition-all',
-                                        'hover:bg-gradient-to-b hover:from-vibrant-red hover:via-vibrant-red hover:to-transparent hover:opacity-80'
+                                        'hover:bg-gradient-to-b hover-hover:hover:from-vibrant-red hover-hover:hover:via-vibrant-red hover-hover:hover:to-transparent hover-hover:hover:opacity-80',
+                                        'active:opacity-0'
                                     )}                               
                                 ></div>
                                 <span className='relative row-start-2 rounded-xl flex-1 inline-block text-center pointer-events-none'>

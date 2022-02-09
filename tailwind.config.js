@@ -5,6 +5,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'hover-hover': {
+          'raw': '(hover: hover)'
+        }
+      },
       fontFamily: {
           'montserrat': ['Montserrat'],
           'lato': ['Lato'],
