@@ -3,6 +3,7 @@ version: '3.4'
 services:
     client:
         image: nextjs-website
+        build: .
         restart: unless-stopped
         labels:
             - "traefik.enable=true"
