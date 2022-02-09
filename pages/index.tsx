@@ -210,7 +210,7 @@ function Portfolio({ id, handleScroll }: {
                                 'transition-transform duration-300 ease-in-out hover:scale-110',
                                 'hover:cursor-pointer',
                             )}>
-                                <img
+                                <Image
                                 className='absolute rounded-t-xl top-0 left-0 opacity-75'
                                 src={banner}
                                 />
