@@ -29,6 +29,7 @@ export default function TextCarousell({ timeout, selections, before='', after=''
           {selections && selections.map((selection, i) => 
               <>
                   <Transition
+                  key={`transition-${selection}-${i}`}
                   as='p'
                   className={classNames(
                     'col-start-2 row-start-1 inline-block',
@@ -44,7 +45,7 @@ export default function TextCarousell({ timeout, selections, before='', after=''
                   >
                       {selection}
                   </Transition>
-                  <p className={classNames(
+                  <p key={`p-${selection}-${i}`} className={classNames(
                       'col-start-2 row-start-1 invisible',
                       className
                   )}>{selection}</p>
