@@ -223,7 +223,7 @@ function Portfolio({ id, handleScroll }: {
                                     className={classNames(
                                         'absolute inset-0 bg-gradient-to-b from-vibrant-red opacity-0 rounded-xl',
                                         'transition-all',
-                                        'hover:bg-gradient-to-b hover-hover:hover:from-vibrant-red hover-hover:hover:via-vibrant-red hover-hover:hover:to-transparent hover-hover:hover:opacity-80',
+                                        'hover:bg-gradient-to-b sm:hover:from-vibrant-red sm:hover:via-vibrant-red sm:hover:to-transparent sm:hover:opacity-80',
                                         'active:opacity-0'
                                     )}                               
                                 ></div>
