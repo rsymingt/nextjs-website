@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
     client:
-        image: rsymingt/nextjs-website
+        image: nextjs-website
         restart: unless-stopped
         labels:
             - "traefik.enable=true"
