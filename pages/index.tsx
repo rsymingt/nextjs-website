@@ -58,7 +58,8 @@ const Home: NextPage = () => {
                 const i = Object.values(navigation).findIndex(n => n.name === id);
                 if(navSelected !== i) {
                     setNavSelected(i)
-                    history.pushState(null, '', `#${id}`);
+                    // history.replaceState(null, '', )
+                    history.replaceState(null, '', `#${id}`);
                 }
             }
         }
