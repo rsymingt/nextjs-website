@@ -240,32 +240,44 @@ function Portfolio({ id, handleScroll }: {
     )
 }
 
+import { useForm } from 'react-hook-form';
+
 function Contact({ id, handleScroll }: {
     id: string,
     handleScroll: (ref: RefObject<HTMLElement>) => void,
 }) {
     const contactRef = useRef<HTMLElement>(null);
-    const nameRef = useRef<HTMLInputElement>(null);
-    const emailRef = useRef<HTMLInputElement>(null);
-    const subjectRef = useRef<HTMLInputElement>(null);
-    const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+    const { register, handleSubmit, reset } = useForm();
+
+    const [status, setStatus] = useState<boolean | string>(false);
 
     function _handleScroll() {
         handleScroll(contactRef);
     }
 
-    function handleSubmit(e: React.FormEvent<HTMLButtonElement>) {
-        const [
-            name,
-            email,
-            subject,
-            message
-        ] = [
-            nameRef.current?.value,
-            emailRef.current?.value,
-            subjectRef.current?.value,
-            textAreaRef.current?.value,
-        ]
+    async function onSubmit( data: any ) {
+        reset({
+            name: '',
+            email: '',
+            subject: '',
+            message: '',
+        });
+        fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then((res) => {
+            if (res.status === 200) {
+                setStatus("Success")
+            } else {
+                setStatus("Failed")
+            }
+            setTimeout(() => setStatus(false), 5000);
+        })
 
     }
 
@@ -276,75 +288,81 @@ function Contact({ id, handleScroll }: {
 
     return(
         <Section ref={contactRef} id={id}>
-            <div className='container px-9 w-full sm:w-1/2 md:flex md:flex-col'>
-                <h1>Contact Me</h1>
-                <ContactInput ref={nameRef} name='name' type='text' placeholder='Your Name *'/>
-                <ContactInput ref={emailRef} name='email' type='email' placeholder='Your Email *'/>
-                <ContactInput ref={subjectRef} name='subject' type='text' placeholder='Your Subject *'/>
-                <ContactTextArea ref={textAreaRef} name='message' placeholder='Your Message *'/>
+            <div className='container relative px-9 w-full sm:w-1/2 md:flex md:flex-col'>
+                <h1 className='mb-2'>Contact Me</h1>
+
+                <input 
+                {...register('name', {
+                    required: true
+                })}
+                className={classNames(
+                    'w-full sm:w-auto rounded-md border-2 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
+                    'transition-all focus:border-neutral-500 focus:scale-105'
+                )}
+                placeholder="Your Name *"
+                type="text"
+                />
+
+                <input 
+                {...register('email', {
+                    required: true,
+                    pattern: /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+                })}
+                className={classNames(
+                    'w-full sm:w-auto rounded-md border-2 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
+                    'transition-all focus:border-neutral-500 focus:scale-105'
+                )}
+                placeholder="Your Email *"
+                type="email"
+                />
+
+                <input 
+                {...register('subject', {
+                    required: true
+                })}
+                className={classNames(
+                    'w-full sm:w-auto rounded-md border-2 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
+                    'transition-all focus:border-neutral-500 focus:scale-105'
+                )}
+                placeholder="Your Subject *"
+                type="text"
+                />
+
+                <textarea
+                {...register('message', {
+                    required: true,
+                })}
+                className={classNames(
+                    'w-full sm:w-auto rounded-md border-2 h-32 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
+                    'transition-all focus:border-neutral-500 focus:scale-105'
+                )}
+                placeholder="Your Message *"
+                />
+
                 <button
                 className={classNames(
                     'text-white text-lg',
                     'bg-vibrant-red self-baseline mt-2 py-2 px-8 rounded-md border-vibrant-red border-2',
                     'transition-all duration-300 ease-in-out hover:bg-transparent hover:-translate-y-1'
                 )}
-                onSubmit={handleSubmit}
+                onClick={handleSubmit(onSubmit)}
                 >SUBMIT</button>
+
+                <Transition
+                className='bg-white rounded-lg mt-2 p-4'
+                show={status ? true: false}
+                enter='transition-all duration-300'
+                enterFrom='h-0'
+                enterTo='h-full'
+                leave='transition-all duration-300'
+                leaveFrom='h-full'
+                leaveTo='h-0'
+                >
+                    {status}
+                </Transition>
             </div>
         </Section>
     )
 }
-
-interface ContactInput {
-    name: string,
-    type?: React.HTMLInputTypeAttribute,
-    placeholder: string
-}
-
-const ContactInput = forwardRef<HTMLInputElement, ContactInput>(({ type, placeholder, name }, ref) => {
-    const [text, setText] = useState('')
-
-    function handleChange( e: React.ChangeEvent<HTMLInputElement> ) {
-        setText(e.target?.value);
-    }
-
-    return(
-        <input 
-        ref={ref}
-        className={classNames(
-            'w-full sm:w-auto rounded-md border-2 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
-            'transition-all focus:border-neutral-500 focus:scale-105'
-        )}
-        name={name}
-        placeholder={placeholder}
-        type={type}
-        onChange={handleChange}
-        value={text}
-        />
-    )
-})
-
-
-const ContactTextArea = forwardRef<HTMLTextAreaElement, ContactInput>(({ placeholder, name }, ref) => {
-    const [text, setText] = useState('')
-
-    function handleChange( e: React.ChangeEvent<HTMLTextAreaElement> ) {
-        setText(e.target?.value);
-    }
-
-    return(
-        <textarea
-        ref={ref}
-        className={classNames(
-            'w-full sm:w-auto rounded-md border-2 h-32 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
-            'transition-all focus:border-neutral-500 focus:scale-105'
-        )}
-        name={name}
-        placeholder={placeholder}
-        onChange={handleChange}
-        value={text}
-        />
-    )
-})
 
 export default Home
