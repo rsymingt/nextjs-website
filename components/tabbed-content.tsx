@@ -7,6 +7,7 @@ export default function TabbedContent({ tabbedContent }: {
         [key: string]: Array<{
             title: string,
             short: string,
+            link?: string,
             description: string,
         }>
     }
@@ -46,12 +47,20 @@ export default function TabbedContent({ tabbedContent }: {
                             'transition-opacity duration-500 ease-in col-start-1 row-start-1 space-y-3',
                             selected === tabTitle ? 'opacity-100': 'opacity-0 invisible'
                         )}>
-                            {list && list.map(({ title, short, description }, z) => 
+                            {list && list.map(({ title, short, link, description }, z) => 
                                 <p 
                                 key={`tabbedContent-content-p-${tabTitle}-${i}-${z}`}
                                 className='text-base'
                                 >
-                                    <strong className="font-medium">{title}</strong> - {short}
+                                    <strong className="font-medium">{title}</strong> - {link ? 
+                                        (<a 
+                                        className="hover:text-white"
+                                        target="_blank" 
+                                        href={link}
+                                        >
+                                            {short}
+                                        </a>) : 
+                                        (short)}
                                     <br/>
                                     {description}
                                 </p>

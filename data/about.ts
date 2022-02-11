@@ -48,16 +48,22 @@ export default {
         //         "description": "2015-2019"
         //     },
         // ],
-        "Education & Awards": [
+        // "Completed Books": [
+        //     {
+
+        //     }
+        // ],
+        "Education & Certificates": [
             {
                 "title": "BHC.CS-Math",
                 "short": "University of Guelph",
                 "description": "2015-2019"
             },
             {
-                "title": "Junior CCC",
-                "short": "First Place",
-                "description": "2014 - 2015"
+                "title": "TripleByte Certifications",
+                "short": "Link",
+                "link": "https://triplebyte.com/tb/ryan-symington-y6hnahb/certificate",
+                "description": "2022"
             }
         ]
     }
