@@ -15,6 +15,7 @@ import TextCarousell from '../components/text-carousell';
 import Navbar, { Navigation } from '../components/navbar';
 
 import MeJPG from '../public/intro/me-cropped.jpg';
+import MapleLeafSVG from '../public/intro/maple-leaf.svg'
 
 const navigation: Navigation = [
     { name: 'Home', href: '#Home' },
@@ -105,24 +106,46 @@ function Intro({ id, handleScroll }: {
                         <TextCarousell className='text-vibrant-red font-black' timeout={5000} 
                         selections={['Full-Stack Developer.', 'NodeJS Developer.', 'React Developer.']}/>
                         <div className='h-12 w-12 sm:w-16 sm:h-16 md:h-20 md:w-20'>
-                            <Image 
+                            <MapleLeafSVG
+                            className='w-full h-full'
+                            // width={48}
+                            // height={48}
+                            />
+                            {/* <Image 
                             className='filter-vibrant-red' 
-                            src="/intro/maple-leaf.svg" 
+                            src={MapleLeafSVG} 
                             width={48} 
                             height={48}
                             layout='responsive'
-                            />
+                            /> */}
                         </div>
                         {/* <Image className='filter-vibrant-red' src="/intro/maple-leaf.svg" width={48} height={48}/> */}
                     </h1>
                 </div>
                 <div className='col-span-1'>
-                    <div className='absolute inset-y-0 right-0'>
-                        <img 
+                    {/* <div className='absolute inset-y-0 right-0'> */}
+                    <div className='absolute w-auto h-full inset-y-0 right-0 left-0'>
+                        {/* <img 
                         className={classNames(
                             'relative max-h-full max-w-none grayscale opacity-90'
                         )}
                         src='/intro/me-cropped.jpg'
+                        /> */}
+                        <Image
+                        className={classNames(
+                            'intro-img',
+                            'grayscale opacity-90',
+                            'gradient-mask-l-0'
+                        )}
+                        // width={523}
+                        // height={809}
+                        objectFit='cover'  
+                        layout="fill"
+                        // layout='responsive'
+                        src={MeJPG}
+                        placeholder="blur"
+                        quality={50}
+                        objectPosition="right"
                         />
                         {/* <Image
                         className={classNames(
@@ -138,7 +161,7 @@ function Intro({ id, handleScroll }: {
                         objectPosition='right'
                         placeholder='blur'
                         /> */}
-                        <div className='absolute inset-0 bg-gradient-to-r from-black to-transparent'></div>
+                        {/* <div className='absolute inset-0 bg-gradient-to-r from-black to-transparent'></div> */}
                     </div>
                 </div>
             </div>
@@ -214,6 +237,7 @@ function Portfolio({ id, handleScroll }: {
                                 <Image
                                 className='absolute rounded-t-xl top-0 left-0 opacity-75'
                                 src={banner}
+                                placeholder="blur"
                                 />
                                 <div
                                     className={classNames(

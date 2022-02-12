@@ -65,5 +65,12 @@ h4 {
   object-fit: cover;
   background: #eb01a5;
   background-image: url("/intro/me.jpg"); /* fallback */
-  background-image: url("/intro/me.jpg"), linear-gradient(#eb01a5, #d13531); /* W3C */
+  background-image: url("/intro/me.jpg"), linear-gradient(#eb01a5, #d13531);
+} 
+
+.intro-img {
+  min-width: 0% !important;
+  max-width: fit-content !important;
+  width: auto !important;
+  margin: auto 0 auto auto !important;
 }
