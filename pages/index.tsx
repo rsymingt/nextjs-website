@@ -195,11 +195,13 @@ function Portfolio({ id, handleScroll }: {
             <div className='container px-9 w-full flex flex-col items-center justify-center'>
                 <h1 className='mb-4'>Portfolio</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
-                    {portfolioData.projects.map(({ title, description, banner }, i) => {
+                    {portfolioData.projects.slice().reverse().map(({ title, description, banner }, i) => {
                         return(
-                            <Link href={`/portfolio/${i}`}>
+                            <Link 
+                            key={`portfolio-${i}`}
+                            href={`/portfolio/${portfolioData.projects.length-i-1}`}
+                            >
                                 <div
-                                key={`portfolio-${i}`}
                                 className={classNames(
                                     'relative grid grid-cols-1 grid-rows-2',
                                     'w-72 h-80 sm:w-72 sm:h-72 rounded-xl bg-neutral-900',
