@@ -75,9 +75,8 @@ const Home: NextPage = () => {
 
     return (
         <div id="Home">
-            <Head>
-            <title>Software Developer | Ryan Symington</title>
-            </Head>
+            {/* <Head>
+            </Head> */}
             <Navbar onNavClick={handleNavbarClick} current={navSelected} navigation={navigation}/>
             <div className=''>
                 <Intro id="Home" handleScroll={handleScroll}/>
@@ -197,7 +196,7 @@ function Portfolio({ id, handleScroll }: {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
                     {portfolioData.projects.slice().reverse().map(({ title, description, banner }, i) => {
                         return(
-                            <Link 
+                            <a 
                             key={`portfolio-${i}`}
                             href={`/portfolio/${portfolioData.projects.length-i-1}`}
                             >
@@ -231,7 +230,7 @@ function Portfolio({ id, handleScroll }: {
                                         <h4 className='my-3'>{title}</h4>
                                     </span>
                                 </div>
-                            </Link>
+                            </a>
                         )
                     })}
                 </div>
