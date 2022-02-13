@@ -6,19 +6,27 @@ import Image from "next/image";
 import portfolioData from "../../data/portfolio";
 import React from "react";
 
-import styles from "../../styles/Portfolio.module.css";
-
 export default function PortfolioPage() {
     const router = useRouter()
     const { id } = router.query
 
     if(!id || parseInt(id.toString()) === NaN) {
         return(
-            <h1>Invalid URL</h1>
+            <div className="flex flex-col min-h-screen h-full w-full bg-white font-sans pb-10">
+                <h1>Invalid URL</h1>
+            </div>
         )
     }
 
     const project = portfolioData.projects[parseInt(id.toString())];
+
+    if(!project) {
+        return(
+            <div className="flex flex-col min-h-screen h-full w-full bg-white font-sans pb-10">
+                <h1>Invalid URL</h1>
+            </div>
+        )
+    }
 
     return(
         <div className="flex flex-col min-h-screen h-full w-full bg-white font-sans pb-10">

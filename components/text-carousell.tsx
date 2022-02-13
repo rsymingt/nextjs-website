@@ -13,9 +13,11 @@ export default function TextCarousell({ timeout, selections, before='', after=''
   // const { timeout, selections } = props;
 
   useEffect(() => {
-      setTimeout(() => {
+      let sTimeout = setTimeout(() => {
           setSelected(selected < selections.length-1 ? selected+1 : 0)
-      }, timeout)
+      }, timeout);
+
+      return () => clearTimeout(sTimeout);
   })
 
   return(

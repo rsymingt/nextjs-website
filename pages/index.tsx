@@ -83,6 +83,7 @@ const Home: NextPage = () => {
                 <Intro id="Home" handleScroll={handleScroll}/>
                 <About id="About" handleScroll={handleScroll}/>
                 <Portfolio id="Portfolio" handleScroll={handleScroll}/>
+                <Blog id="Blog" handleScroll={handleScroll}/>
                 <Contact id="Contact" handleScroll={handleScroll}/>
             </div>
             <Footer/>
@@ -159,7 +160,7 @@ function About({ id, handleScroll }: {
 
     return(
         <Section ref={ref} id={id}>
-            <div className='container px-9 w-full sm:w-1/2 md:flex'>
+            <div className='container px-9 w-full sm:w-2/3 md:1/2 md:flex'>
                 <div className="flex flex-1 flex-col">
                     <h1 className='text-center'>About Me</h1>
                     <p className='mt-4 mb-6 text-lg'>
@@ -197,7 +198,7 @@ function Portfolio({ id, handleScroll }: {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
                     {portfolioData.projects.slice().reverse().map(({ title, description, banner }, i) => {
                         return(
-                            <Link 
+                            <a 
                             key={`portfolio-${i}`}
                             href={`/portfolio/${portfolioData.projects.length-i-1}`}
                             >
@@ -231,7 +232,73 @@ function Portfolio({ id, handleScroll }: {
                                         <h4 className='my-3'>{title}</h4>
                                     </span>
                                 </div>
-                            </Link>
+                            </a>
+                        )
+                    })}
+                </div>
+            </div>
+        </Section>
+    )
+}
+
+function Blog({ id, handleScroll }: {
+    id: string,
+    handleScroll: (ref: RefObject<HTMLElement>) => void,
+}) {
+    const ref = useRef<HTMLElement>(null);
+
+    function _handleScroll() {
+        handleScroll(ref);
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', _handleScroll);
+        return () => window.removeEventListener('scroll', _handleScroll);
+    })
+
+    return(
+        <Section ref={ref} id={id}>
+            <div className='container px-9 w-full flex flex-col items-center justify-center'>
+                <h1 className='mb-4'>Portfolio</h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
+                    {portfolioData.projects.slice().reverse().map(({ title, description, banner }, i) => {
+                        return(
+                            <a 
+                            target={'_self'}
+                            key={`portfolio-${i}`}
+                            href={`/portfolio/${portfolioData.projects.length-i-1}`}
+                            >
+                                <div
+                                className={classNames(
+                                    'relative grid grid-cols-1 grid-rows-2',
+                                    'w-72 h-80 sm:w-72 sm:h-72 rounded-xl bg-neutral-900',
+                                    'transition-transform duration-300 ease-in-out hover:scale-110',
+                                    'hover:cursor-pointer',
+                                )}>
+                                    <Image
+                                    className='absolute rounded-t-xl top-0 left-0 opacity-75'
+                                    src={banner}
+                                    placeholder="blur"
+                                    />
+                                    <div
+                                        className={classNames(
+                                            'absolute inset-0 bg-black opacity-50 rounded-xl pointer-events-none',
+                                        )}                               
+                                    ></div>
+                                    <div
+                                        className={classNames(
+                                            'absolute inset-0 bg-gradient-to-b from-vibrant-red opacity-0 rounded-xl',
+                                            'transition-all',
+                                            'hover:bg-gradient-to-b sm:hover:from-vibrant-red sm:hover:via-vibrant-red sm:hover:to-transparent sm:hover:opacity-80',
+                                            'active:opacity-0'
+                                        )}                               
+                                    ></div>
+                                    <span className='relative row-start-2 rounded-xl flex-1 inline-block text-center pointer-events-none'>
+                                        <p className='my-3'>Development</p>
+                                        <h4 className='my-3'>{title}</h4>
+                                    </span>
+                                </div>
+                            </a>
                         )
                     })}
                 </div>
