@@ -59,7 +59,7 @@ export default {
             },
             "githubURL": "https://github.com/rsymingt/rotary-local-lager-cms",
             "additional": {
-                "Language": "PHP",
+                "Language": "PHP | Bootstrap",
                 "Project Type": "Website (CMS)",
                 "Stage": "Complete"
             }
@@ -89,7 +89,7 @@ export default {
             },
             "githubURL": "https://github.com/rsymingt/react-website-web-workers",
             "additional": {
-                "Language": "React.js",
+                "Language": "React.js | Bootstrap",
                 "Project Type": "Standalone Application",
                 "Stage": "Incomplete"
             }
@@ -135,15 +135,35 @@ export default {
                         <br/><br/>
                         <p className="font-normal text-lg text-neutral-600 leading-10">
                             By deploying these on a docker swarm behind a traefik reverse-proxy with google oauth2, I have security, scaleability and access to my scheduler remotely.
-
                         </p>
                     </div>
                 )
             },
             "githubURL": "",
             "additional": {
-                "Language": "React.js & NodeJS (Express)",
+                "Language": "React.js | Bootstrap | NodeJS (Express)",
                 "Project Type": "Full-Stack Application",
+            }
+        },
+        {
+            "title": "NextJS Website",
+            "banner": require("../public/portfolio/nextjs-website/screen.png"),
+            description() {
+                return(
+                    <div className="inline-flex flex-col gap-10">
+                        <p className="font-normal text-2xl">
+                            I developed a Next.js application using React and TailwindCSS to create custom layouts and animations.
+                        </p>
+                        <br/>
+                        <p className="font-normal text-lg text-neutral-600 leading-10">
+                        </p>
+                    </div>
+                )
+            },
+            "githubURL": "https://github.com/rsymingt/nextjs-website",
+            "additional": {
+                "Language": "React.js | TailwindCSS | Next.js",
+                "Project Type": "Web Application",
             }
         },
     ]
