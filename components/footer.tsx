@@ -11,13 +11,13 @@ export default function Footer() {
         <div
         className={classNames(
             'bg-light-black p-4 h-20',
-            'flex items-stretch'
+            'flex items-stretch justify-between'
         )}
         >
-            <span className='flex-1'>
-                {/* <h1>Test</h1> */}
-            </span>
-            <div className="flex-1 flex justify-center">
+            <div className={classNames(
+                "px-9 flex justify-start",
+                ""
+            )}>
                 <a 
                 className={classNames(
                     'p-2 flex items-center',
@@ -49,7 +49,7 @@ export default function Footer() {
                     />
                 </a>
             </div>
-            <span className='flex-1 flex items-center justify-end pr-2'>
+            <span className='flex items-center justify-end pr-2'>
                 <h4>Powered by Next.js</h4>
             </span>
         </div>
