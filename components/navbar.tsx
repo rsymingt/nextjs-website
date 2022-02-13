@@ -100,7 +100,11 @@ export default function Navbar({ navigation, onNavClick, current }: {
                         href={config.linkedinURL} 
                         target='_blank'
                         >
-                            <LinkedInIcon className='h-4 w-4'/>
+                            <LinkedInIcon 
+                            // className='h-4 w-4'
+                            width={16}
+                            height={16}
+                            />
                         </a>
                         <a 
                         className={classNames(
@@ -111,7 +115,11 @@ export default function Navbar({ navigation, onNavClick, current }: {
                         href={config.githubURL} 
                         target='_blank'
                         >
-                            <GithubIcon className='h-4 w-4'/>
+                            <GithubIcon 
+                            // className='h-4 w-4'
+                            width={16}
+                            height={16}
+                            />
                         </a>
                     {/* <button
                         type="button"

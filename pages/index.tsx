@@ -4,18 +4,25 @@ import type { NextPage } from 'next'
 import React, { forwardRef, RefObject, useEffect, useRef, useState } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
+import d from 'next/'
 import { Transition } from '@headlessui/react';
 import Layout from '../components/layout';
 import classNames from 'classnames';
+import { useForm } from 'react-hook-form';
 
 import aboutData from '../data/about';
 import TabbedContent from '../components/tabbed-content';
 import Section from '../components/section';
 import TextCarousell from '../components/text-carousell';
 import Navbar, { Navigation } from '../components/navbar';
+import Link from 'next/link';
+
+import portfolioData from '../data/portfolio';
 
 import MeJPG from '../public/intro/me-cropped.jpg';
 import MapleLeafSVG from '../public/intro/maple-leaf.svg'
+
+import Footer from '../components/footer';
 
 const navigation: Navigation = [
     { name: 'Home', href: '#Home' },
@@ -67,7 +74,7 @@ const Home: NextPage = () => {
     }
 
     return (
-        <div>
+        <div id="Home">
             <Head>
             <title>Software Developer | Ryan Symington</title>
             </Head>
@@ -78,6 +85,7 @@ const Home: NextPage = () => {
                 <Portfolio id="Portfolio" handleScroll={handleScroll}/>
                 <Contact id="Contact" handleScroll={handleScroll}/>
             </div>
+            <Footer/>
         </div>
     )
 }
@@ -108,60 +116,25 @@ function Intro({ id, handleScroll }: {
                         <div className='h-12 w-12 sm:w-16 sm:h-16 md:h-20 md:w-20'>
                             <MapleLeafSVG
                             className='w-full h-full'
-                            // width={48}
-                            // height={48}
                             />
-                            {/* <Image 
-                            className='filter-vibrant-red' 
-                            src={MapleLeafSVG} 
-                            width={48} 
-                            height={48}
-                            layout='responsive'
-                            /> */}
                         </div>
-                        {/* <Image className='filter-vibrant-red' src="/intro/maple-leaf.svg" width={48} height={48}/> */}
                     </h1>
                 </div>
                 <div className='col-span-1'>
-                    {/* <div className='absolute inset-y-0 right-0'> */}
-                    <div className='absolute w-auto h-full inset-y-0 right-0 left-0'>
-                        {/* <img 
-                        className={classNames(
-                            'relative max-h-full max-w-none grayscale opacity-90'
-                        )}
-                        src='/intro/me-cropped.jpg'
-                        /> */}
+                    <div className='absolute inset-0'>
                         <Image
                         className={classNames(
                             'intro-img',
                             'grayscale opacity-90',
                             'gradient-mask-l-0'
                         )}
-                        // width={523}
-                        // height={809}
                         objectFit='cover'  
                         layout="fill"
-                        // layout='responsive'
                         src={MeJPG}
                         placeholder="blur"
                         quality={50}
                         objectPosition="right"
                         />
-                        {/* <Image
-                        className={classNames(
-                            'relative inset-y-0 right-0 grayscale opacity-90',
-                            'max-h-full max-w-none min-w-0 min-h-0'
-                        )}
-                        src={MeJPG}
-                        width={2400}
-                        height={3000}
-                        // layout='responsive'
-                        layout='fill'
-                        objectFit='fill'
-                        objectPosition='right'
-                        placeholder='blur'
-                        /> */}
-                        {/* <div className='absolute inset-0 bg-gradient-to-r from-black to-transparent'></div> */}
                     </div>
                 </div>
             </div>
@@ -202,8 +175,6 @@ function About({ id, handleScroll }: {
     )
 }
 
-import portfolioData from '../data/portfolio';
-
 function Portfolio({ id, handleScroll }: {
     id: string,
     handleScroll: (ref: RefObject<HTMLElement>) => void,
@@ -226,37 +197,39 @@ function Portfolio({ id, handleScroll }: {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
                     {portfolioData.projects.map(({ title, description, banner }, i) => {
                         return(
-                            <div 
-                            key={`portfolio-${i}`}
-                            className={classNames(
-                                'relative grid grid-cols-1 grid-rows-2',
-                                'w-72 h-80 sm:w-72 sm:h-72 rounded-xl bg-neutral-900',
-                                'transition-transform duration-300 ease-in-out hover:scale-110',
-                                'hover:cursor-pointer',
-                            )}>
-                                <Image
-                                className='absolute rounded-t-xl top-0 left-0 opacity-75'
-                                src={banner}
-                                placeholder="blur"
-                                />
+                            <Link href={`/portfolio/${i}`}>
                                 <div
-                                    className={classNames(
-                                        'absolute inset-0 bg-black opacity-50 rounded-xl pointer-events-none',
-                                    )}                               
-                                ></div>
-                                <div
-                                    className={classNames(
-                                        'absolute inset-0 bg-gradient-to-b from-vibrant-red opacity-0 rounded-xl',
-                                        'transition-all',
-                                        'hover:bg-gradient-to-b sm:hover:from-vibrant-red sm:hover:via-vibrant-red sm:hover:to-transparent sm:hover:opacity-80',
-                                        'active:opacity-0'
-                                    )}                               
-                                ></div>
-                                <span className='relative row-start-2 rounded-xl flex-1 inline-block text-center pointer-events-none'>
-                                    <p className='my-3'>Development</p>
-                                    <h4 className='my-3'>{title}</h4>
-                                </span>
-                            </div>
+                                key={`portfolio-${i}`}
+                                className={classNames(
+                                    'relative grid grid-cols-1 grid-rows-2',
+                                    'w-72 h-80 sm:w-72 sm:h-72 rounded-xl bg-neutral-900',
+                                    'transition-transform duration-300 ease-in-out hover:scale-110',
+                                    'hover:cursor-pointer',
+                                )}>
+                                    <Image
+                                    className='absolute rounded-t-xl top-0 left-0 opacity-75'
+                                    src={banner}
+                                    placeholder="blur"
+                                    />
+                                    <div
+                                        className={classNames(
+                                            'absolute inset-0 bg-black opacity-50 rounded-xl pointer-events-none',
+                                        )}                               
+                                    ></div>
+                                    <div
+                                        className={classNames(
+                                            'absolute inset-0 bg-gradient-to-b from-vibrant-red opacity-0 rounded-xl',
+                                            'transition-all',
+                                            'hover:bg-gradient-to-b sm:hover:from-vibrant-red sm:hover:via-vibrant-red sm:hover:to-transparent sm:hover:opacity-80',
+                                            'active:opacity-0'
+                                        )}                               
+                                    ></div>
+                                    <span className='relative row-start-2 rounded-xl flex-1 inline-block text-center pointer-events-none'>
+                                        <p className='my-3'>Development</p>
+                                        <h4 className='my-3'>{title}</h4>
+                                    </span>
+                                </div>
+                            </Link>
                         )
                     })}
                 </div>
@@ -264,8 +237,6 @@ function Portfolio({ id, handleScroll }: {
         </Section>
     )
 }
-
-import { useForm } from 'react-hook-form';
 
 function Contact({ id, handleScroll }: {
     id: string,

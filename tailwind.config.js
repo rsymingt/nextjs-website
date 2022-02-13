@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      borderWidth: {
+        '1': '1px'
+      },
       screens: {
         'hover-hover': {
           'raw': '(hover: hover)'
@@ -24,6 +27,7 @@ module.exports = {
       },
       colors: {
         'vibrant-red': '#f9004d',
+        'light-black': '#101010',
       },
       fontSize: {
         '5xl': ['3rem', {
