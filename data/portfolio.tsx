@@ -5,7 +5,7 @@ export default {
     "projects": [
         {
             "title": "First Robotics Competition",
-            "banner": require("../public/portfolio/frc/group-photo.jpg"),
+            "banner": require("../public/portfolio/frc/arena.jpg"),
             description() {
                 return(
                     <div className="inline-flex flex-col gap-10">
@@ -145,26 +145,47 @@ export default {
                 "Project Type": "Full-Stack Application",
             }
         },
-        {
-            "title": "NextJS Website",
-            "banner": require("../public/portfolio/nextjs-website/screen.png"),
-            description() {
-                return(
-                    <div className="inline-flex flex-col gap-10">
-                        <p className="font-normal text-2xl">
-                            I developed a Next.js application using React and TailwindCSS to create custom layouts and animations.
-                        </p>
-                        <br/>
-                        <p className="font-normal text-lg text-neutral-600 leading-10">
-                        </p>
-                    </div>
-                )
-            },
-            "githubURL": "https://github.com/rsymingt/nextjs-website",
-            "additional": {
-                "Language": "React.js | TailwindCSS | Next.js",
-                "Project Type": "Web Application",
-            }
-        },
+        // {
+        //     "title": "Python Scraper",
+        //     "banner": require("../public/portfolio/nextjs-website/screen.png"),
+        //     description() {
+        //         return(
+        //             <div className="inline-flex flex-col gap-10">
+        //                 <p className="font-normal text-2xl">
+        //                     I developed a Next.js application using React and TailwindCSS to create custom layouts and animations.
+        //                 </p>
+        //                 <br/>
+        //                 <p className="font-normal text-lg text-neutral-600 leading-10">
+        //                 </p>
+        //             </div>
+        //         )
+        //     },
+        //     "githubURL": "https://github.com/rsymingt/nextjs-website",
+        //     "additional": {
+        //         "Language": "React.js | TailwindCSS | Next.js",
+        //         "Project Type": "Web Application",
+        //     }
+        // },
+        // {
+        //     "title": "NextJS Website",
+        //     "banner": require("../public/portfolio/nextjs-website/screen.png"),
+        //     description() {
+        //         return(
+        //             <div className="inline-flex flex-col gap-10">
+        //                 <p className="font-normal text-2xl">
+        //                     I developed a Next.js application using React and TailwindCSS to create custom layouts and animations.
+        //                 </p>
+        //                 <br/>
+        //                 <p className="font-normal text-lg text-neutral-600 leading-10">
+        //                 </p>
+        //             </div>
+        //         )
+        //     },
+        //     "githubURL": "https://github.com/rsymingt/nextjs-website",
+        //     "additional": {
+        //         "Language": "React.js | TailwindCSS | Next.js",
+        //         "Project Type": "Web Application",
+        //     }
+        // },
     ]
 }
