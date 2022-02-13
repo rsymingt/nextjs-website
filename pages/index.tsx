@@ -75,9 +75,8 @@ const Home: NextPage = () => {
 
     return (
         <div id="Home">
-            <Head>
-            <title>Software Developer | Ryan Symington</title>
-            </Head>
+            {/* <Head>
+            </Head> */}
             <Navbar onNavClick={handleNavbarClick} current={navSelected} navigation={navigation}/>
             <div className=''>
                 <Intro id="Home" handleScroll={handleScroll}/>
