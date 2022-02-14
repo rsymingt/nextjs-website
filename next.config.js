@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = { // TODO: #6 add nextjs security headers @rsymingt
   reactStrictMode: true,
   experimental: {
-    outputStandalone: true,
+    // outputStandalone: true,
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // Important: return the modified config

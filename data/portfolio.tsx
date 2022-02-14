@@ -1,11 +1,15 @@
 
-import styles from "../styles/Portfolio.module.css";
+import path from "path"
+
+import styles from "../src/styles/Portfolio.module.css";
+
+// TODO: #4 add portfolio projects @rsymingt
 
 export default {
     "projects": [
         {
             "title": "First Robotics Competition",
-            "banner": require("../public/portfolio/frc/arena.jpg"),
+            "banner": require("../src/public/portfolio/frc/arena.jpg"),
             description() {
                 return(
                     <div className="inline-flex flex-col gap-10">
@@ -35,7 +39,7 @@ export default {
         },
         {
             "title": "Rotary Local Lager (CMS)",
-            "banner": require("../public/portfolio/rll/rll.jpg"),
+            "banner": require("../src/public/portfolio/rll/rll.jpg"),
             description() {
                 return(
                     <div className="inline-flex flex-col gap-10">
@@ -66,7 +70,7 @@ export default {
         },
         {
             "title": "React Web Workers (Fractals)",
-            "banner": require("../public/portfolio/web-worker/fractal-snap.png"),
+            "banner": require("../src/public/portfolio/web-worker/fractal-snap.png"),
             description() {
                 return(
                     <div className="inline-flex flex-col gap-10">
@@ -96,7 +100,7 @@ export default {
         },
         {
             "title": "Cloud Application (PWA)",
-            "banner": require("../public/portfolio/cloud-ui/cloud-ui-1.png"),
+            "banner": require("../src/public/portfolio/cloud-ui/cloud-ui-1.png"),
             description() {
                 return(
                     <div className="inline-flex flex-col gap-10">
@@ -147,7 +151,7 @@ export default {
         },
         {
             "title": "Python Scraper",
-            "banner": require("../public/portfolio/py-scraper/screen.png"),
+            "banner": require("../src/public/portfolio/py-scraper/screen.png"),
             description() {
                 return(
                     <div className="inline-flex flex-col gap-10">
@@ -213,7 +217,7 @@ export default {
         },
         {
             "title": "NextJS Website",
-            "banner": require("../public/portfolio/nextjs-website/screen.png"),
+            "banner": require("../src/public/portfolio/nextjs-website/screen.png"),
             description() {
                 return(
                     <div className="inline-flex flex-col gap-10">

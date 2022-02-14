@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-import portfolioData from "../../data/portfolio";
+import portfolioData from "../../../data/portfolio";
 import React from "react";
 
 import styles from "../../styles/Portfolio.module.css";
