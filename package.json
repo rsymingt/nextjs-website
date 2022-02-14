@@ -6,8 +6,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "knex migrate:latest",
-    "seed": "knex seed:run"
+    "db:migrate": "knex migrate:latest",
+    "db:migrate:make": "knex migrate:latest",
+    "db:seed": "knex seed:run",
+    "db:setup": "npm run db:migrate && npm run db:seed"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.3",

@@ -6,6 +6,9 @@
 .pnp.js
 .env
 
+# sqlite3
+dev.sqlite3
+
 # testing
 /coverage
 
