@@ -114,6 +114,7 @@ function Intro({ id, handleScroll }: {
                         <TextCarousell className='text-vibrant-red font-black' timeout={5000} 
                         selections={['Full-Stack Developer.', 'NodeJS Developer.', 'React Developer.']}/>
                         <div className='h-12 w-12 sm:w-16 sm:h-16 md:h-20 md:w-20'>
+                            {/* TODO: #1 fix color red to vibrant-red @rsymingt */}
                             <MapleLeafSVG
                             className='w-full h-full'
                             />
