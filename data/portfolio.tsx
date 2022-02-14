@@ -145,47 +145,95 @@ export default {
                 "Project Type": "Full-Stack Application",
             }
         },
-        // {
-        //     "title": "Python Scraper",
-        //     "banner": require("../public/portfolio/nextjs-website/screen.png"),
-        //     description() {
-        //         return(
-        //             <div className="inline-flex flex-col gap-10">
-        //                 <p className="font-normal text-2xl">
-        //                     I developed a Next.js application using React and TailwindCSS to create custom layouts and animations.
-        //                 </p>
-        //                 <br/>
-        //                 <p className="font-normal text-lg text-neutral-600 leading-10">
-        //                 </p>
-        //             </div>
-        //         )
-        //     },
-        //     "githubURL": "https://github.com/rsymingt/nextjs-website",
-        //     "additional": {
-        //         "Language": "React.js | TailwindCSS | Next.js",
-        //         "Project Type": "Web Application",
-        //     }
-        // },
-        // {
-        //     "title": "NextJS Website",
-        //     "banner": require("../public/portfolio/nextjs-website/screen.png"),
-        //     description() {
-        //         return(
-        //             <div className="inline-flex flex-col gap-10">
-        //                 <p className="font-normal text-2xl">
-        //                     I developed a Next.js application using React and TailwindCSS to create custom layouts and animations.
-        //                 </p>
-        //                 <br/>
-        //                 <p className="font-normal text-lg text-neutral-600 leading-10">
-        //                 </p>
-        //             </div>
-        //         )
-        //     },
-        //     "githubURL": "https://github.com/rsymingt/nextjs-website",
-        //     "additional": {
-        //         "Language": "React.js | TailwindCSS | Next.js",
-        //         "Project Type": "Web Application",
-        //     }
-        // },
+        {
+            "title": "Python Scraper",
+            "banner": require("../public/portfolio/py-scraper/screen.png"),
+            description() {
+                return(
+                    <div className="inline-flex flex-col gap-10">
+                        <p className="font-normal text-2xl">
+                            Supply chain issues have made it difficult to find products in stock.
+                            To solve this issue I've created a configurable web scraper with the ability to recursively search.
+                        </p>
+                        <br/>
+                        <p className="font-normal text-lg text-neutral-600 leading-10">
+                            The scraper will iterate through a list of JSON configurations.
+                            Each configuration is capable of getting a list of elements matching a css selector and filtering it based on regex tests.
+                            nested scraping configurations can be added to repeat the scrape on the page if the matched list contains links.
+                        </p>
+                        <br/>
+                        <h4 className={styles['heading-4']}>Example Configuration</h4>
+                        <br/>
+                        <div>
+                            <pre><code
+                            style={{
+                                whiteSpace: "pre-wrap"
+                            }} className="break-words whitespace-pre-wrap">
+                                {JSON.stringify({
+                                    "title": "Canada Computers DDR5",
+                                    "url": "https://www.canadacomputers.com/search/results_details.php?language=en&keywords=ddr5",
+                                    "loadmore": true, 
+                                    "pageSelector": "#load_more", 
+                                    "rootSelector": ".productTemplate", 
+                                    "urlSelector": "link",
+                                    "selectors": {
+                                        "title": ".productTemplate_title",
+                                        "link": ".productTemplate_title > a",
+                                        "price": ".pq-hdr-product_price",
+                                        "extra": ".addCartSearch"
+                                    },
+                                    "filterDict": {
+                                        "title": [
+                                            ["\\d+MHz", true],
+                                            ["32GB", true],
+                                            ["\\+", false]
+                                        ]
+                                    },
+                                    "notifyFilter": ["price", "title"],
+                                    "maxPages": "inf",
+                                    "_scrape": {
+                                        "url": "link",
+                                        "rootSelector": ".page-product_info.container", 
+                                        "selectors": {
+                                            "availability": ".pi-prod-availability",
+                                            "onlineStock": ".pi-prod-availability > span:first-of-type > i.fa-check",
+                                            "storeStock": ".pi-prod-availability > span:nth-of-type(2) > i.fa-check"
+                                        },
+                                        "filterDict": {
+                                        }
+                                    }
+                                }, null, 4)}
+                            </code></pre>
+                        </div>
+                    </div>
+                )
+            },
+            "githubURL": "https://github.com/rsymingt/py-scraper",
+            "additional": {
+                "Language": "Python | Selenium",
+                "Project Type": "Script",
+            }
+        },
+        {
+            "title": "NextJS Website",
+            "banner": require("../public/portfolio/nextjs-website/screen.png"),
+            description() {
+                return(
+                    <div className="inline-flex flex-col gap-10">
+                        <p className="font-normal text-2xl">
+                            I developed a Next.js application using React and TailwindCSS to create custom layouts and animations.
+                        </p>
+                        <br/>
+                        <p className="font-normal text-lg text-neutral-600 leading-10">
+                        </p>
+                    </div>
+                )
+            },
+            "githubURL": "https://github.com/rsymingt/nextjs-website",
+            "additional": {
+                "Language": "React.js | TailwindCSS | Next.js",
+                "Project Type": "Web Application",
+            }
+        },
     ]
 }
