@@ -165,10 +165,7 @@ export default {
                         <h4 className={styles['heading-4']}>Example Configuration</h4>
                         <br/>
                         <div>
-                            <pre><code
-                            style={{
-                                whiteSpace: "pre-wrap"
-                            }} className="break-words whitespace-pre-wrap">
+                            <pre className={styles['code-block']}><code>
                                 {JSON.stringify({
                                     "title": "Canada Computers DDR5",
                                     "url": "https://www.canadacomputers.com/search/results_details.php?language=en&keywords=ddr5",
