@@ -190,6 +190,7 @@ function Portfolio({ id, handleScroll }: {
         return () => window.removeEventListener('scroll', _handleScroll);
     })
 
+    // TODO: #2 create paginator or transition for >6 projects @rsymingt
     return(
         <Section ref={ref} id={id}>
             <div className='container px-9 w-full flex flex-col items-center justify-center'>
