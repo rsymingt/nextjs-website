@@ -1,6 +1,6 @@
 
 import { Model } from 'objection';
-import knex from '../knex/knex';
+import knex from '../db/knex';
 
 Model.knex(knex);
 
