@@ -4,7 +4,7 @@ import classNames from "classnames";
 import LinkedInIcon from '../public/linkedin.svg';
 import GithubIcon from '../public/github.svg';
 
-import config from '../data/global';
+import config from '../../data/global';
 
 export default function Footer() {
     return(

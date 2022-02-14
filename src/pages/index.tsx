@@ -10,14 +10,14 @@ import Layout from '../components/layout';
 import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 
-import aboutData from '../data/about';
+import aboutData from '../../data/about';
 import TabbedContent from '../components/tabbed-content';
 import Section from '../components/section';
 import TextCarousell from '../components/text-carousell';
 import Navbar, { Navigation } from '../components/navbar';
 import Link from 'next/link';
 
-import portfolioData from '../data/portfolio';
+import portfolioData from '../../data/portfolio';
 
 import MeJPG from '../public/intro/me-cropped.jpg';
 import MapleLeafSVG from '../public/intro/maple-leaf.svg'
