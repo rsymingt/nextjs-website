@@ -4,6 +4,11 @@ const nextConfig = { // TODO: #6 add nextjs security headers @rsymingt
   experimental: {
     // outputStandalone: true,
   },
+  eslint: {
+    dirs: [
+      "src"
+    ]
+  },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // Important: return the modified config
     config.module.rules.push({

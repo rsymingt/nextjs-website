@@ -1,4 +1,5 @@
-export default {
+
+const aboutData = {
     "tabbedContent": {
         "Main Skills": [
             {
@@ -68,3 +69,5 @@ export default {
         ]
     }
 }
+
+export default aboutData;
