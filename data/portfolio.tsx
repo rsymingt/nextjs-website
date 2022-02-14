@@ -1,6 +1,8 @@
 
 import styles from "../styles/Portfolio.module.css";
 
+// TODO: #4 add portfolio projects @rsymingt
+
 export default {
     "projects": [
         {
