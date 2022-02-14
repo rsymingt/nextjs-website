@@ -3,6 +3,8 @@ import path from "path"
 
 import styles from "../src/styles/Portfolio.module.css";
 
+// TODO: #4 add portfolio projects @rsymingt
+
 export default {
     "projects": [
         {

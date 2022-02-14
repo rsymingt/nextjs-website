@@ -157,6 +157,7 @@ function About({ id, handleScroll }: {
         return () => window.removeEventListener('scroll', _handleScroll);
     })
 
+    // TODO: #3 Add ability to scroll excess TabbedContent
     return(
         <Section ref={ref} id={id}>
             <div className='container px-9 w-full sm:w-1/2 md:flex'>
