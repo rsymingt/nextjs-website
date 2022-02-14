@@ -5,8 +5,15 @@ import { renderToStaticMarkup } from 'react-dom/server';
 
 import httpStatus from 'http-status';
 import nodemailer from 'nodemailer';
+import Post from '../../models/Post';
 
 require('dotenv').config();
+
+Post.query().insert({
+    name: "test"
+}).then(res => {
+    console.log(res);
+})
 
 const transporter = nodemailer.createTransport({
     port: 465,
