@@ -246,6 +246,8 @@ function Portfolio({
   );
 }
 
+// TODO: #11 add Blog Section @rsymingt
+
 function Contact({
   id,
   handleScroll,

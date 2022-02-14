@@ -1,15 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = { // TODO: #6 add nextjs security headers @rsymingt
+const nextConfig = {
+  // TODO: #6 add nextjs security headers @rsymingt
   reactStrictMode: true,
   experimental: {
     // outputStandalone: true,
   },
   eslint: {
-    dirs: [
-      "src"
-    ]
+    dirs: ['src'],
   },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  webpack: (config) => {
     // Important: return the modified config
     config.module.rules.push({
       test: /\.svg$/,
@@ -18,11 +17,11 @@ const nextConfig = { // TODO: #6 add nextjs security headers @rsymingt
       //  // for webpack 5 use
       //  // { and: [/\.(js|ts)x?$/] }
       // },
-      
-      use: ['@svgr/webpack'],
-    })
-    return config
-  },
-}
 
-module.exports = nextConfig
+      use: ['@svgr/webpack'],
+    });
+    return config;
+  },
+};
+
+module.exports = nextConfig;
