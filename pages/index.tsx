@@ -181,7 +181,7 @@ function About({
 
   return (
     <Section ref={ref} id={id}>
-      <div className="container px-9 w-full sm:w-2/3 lg:1/2 md:flex">
+      <div className="container px-9 w-full sm:w-1/2 md:flex">
         <div className="flex flex-1 flex-col">
           <h1 className="text-center">About Me</h1>
           <p className="mt-4 mb-6 text-lg">
