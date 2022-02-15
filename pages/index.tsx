@@ -226,7 +226,7 @@ function Portfolio({
           {portfolioData.projects
             .slice()
             .reverse()
-            .map(({ title, description, banner }, i) => {
+            .map(({ title, type, banner }, i) => {
               return (
                 <a
                   key={`portfolio-${i}`}
@@ -259,7 +259,7 @@ function Portfolio({
                       )}
                     ></div>
                     <span className="relative row-start-2 rounded-xl flex-1 inline-block text-center pointer-events-none">
-                      <p className="my-3">Development</p>
+                      <p className="my-3">{type ? type : "Development"}</p>
                       <h4 className="my-3">{title}</h4>
                     </span>
                   </div>

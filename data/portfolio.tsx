@@ -4,6 +4,7 @@ export default {
   projects: [
     {
       title: "First Robotics Competition",
+      type: "Robotics",
       banner: require("../public/portfolio/frc/arena.jpg"),
       description() {
         return (
@@ -41,6 +42,7 @@ export default {
     },
     {
       title: "Rotary Local Lager (CMS)",
+      type: "Development",
       banner: require("../public/portfolio/rll/rll.jpg"),
       description() {
         return (
@@ -81,6 +83,7 @@ export default {
     },
     {
       title: "React Web Workers (Fractals)",
+      type: "Development",
       banner: require("../public/portfolio/web-worker/fractal-snap.png"),
       description() {
         return (
@@ -118,6 +121,7 @@ export default {
     },
     {
       title: "Cloud Application (PWA)",
+      type: "Development",
       banner: require("../public/portfolio/cloud-ui/cloud-ui-1.png"),
       description() {
         return (
@@ -179,6 +183,7 @@ export default {
     },
     {
       title: "Python Scraper",
+      type: "Scripting",
       banner: require("../public/portfolio/py-scraper/screen.png"),
       description() {
         return (
@@ -256,6 +261,7 @@ export default {
     },
     {
       title: "NextJS Website",
+      type: "Development",
       banner: require("../public/portfolio/nextjs-website/screen.png"),
       description() {
         return (
