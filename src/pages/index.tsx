@@ -156,7 +156,7 @@ function About({
   // TODO: #3 Add ability to scroll excess TabbedContent
   return (
     <Section ref={ref} id={id}>
-      <div className="container px-9 w-full sm:w-1/2 md:flex">
+      <div className="container px-9 w-full sm:w-1/3 lg:w-1/2 md:flex">
         <div className="flex flex-1 flex-col">
           <h1 className="text-center">About Me</h1>
           <p className="mt-4 mb-6 text-lg">
@@ -201,7 +201,7 @@ function Portfolio({
           {portfolioData.projects
             .slice()
             .reverse()
-            .map(({ title, banner }, i) => (
+            .map(({ title, type, banner }, i) => (
               <a
                 key={`portfolio-${i}`}
                 href={`/portfolio/${portfolioData.projects.length - i - 1}`}
@@ -234,7 +234,7 @@ function Portfolio({
                     )}
                   ></div>
                   <span className="relative row-start-2 rounded-xl flex-1 inline-block text-center pointer-events-none">
-                    <p className="my-3">Development</p>
+                    <p className="my-3">{type ? type : 'Development'}</p>
                     <h4 className="my-3">{title}</h4>
                   </span>
                 </div>
