@@ -1,6 +1,6 @@
-import Post from '../post';
+import PostModel from '../post';
 
-const postData = {
+const postData: Post = {
   name: 'Ryan',
 };
 
@@ -9,8 +9,7 @@ describe('post model', () => {
   const { name } = postData;
 
   beforeAll(async () => {
-    post = await Post.query().insert(postData);
-    console.log('test');
+    post = await PostModel.query().insert(postData);
   });
 
   it('should have a name', () => {

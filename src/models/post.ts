@@ -3,9 +3,11 @@ import knex from '../db/knex';
 
 Model.knex(knex);
 
-export default class Post extends Model {
-  name!: string;
+interface PostModel extends Post {
+  name: string;
+}
 
+class PostModel extends Model {
   // Table name is the only required property.
   static get tableName() {
     return 'posts';
@@ -50,3 +52,5 @@ export default class Post extends Model {
   //   }
   // }
 }
+
+export default PostModel;

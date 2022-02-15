@@ -1,18 +1,23 @@
+import httpStatus from 'http-status';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import * as postController from '../../controllers/post';
 
 export default async function handle(
   req: NextApiRequest,
-  res: NextApiResponse<void>
+  res: NextApiResponse<void | Post[]>
 ) {
-  switch (req.method) {
-    case 'GET':
-      postController.list();
-      break;
-    case 'POST':
-      postController.create();
-      break;
+  try {
+    switch (req.method) {
+      case 'GET':
+        await postController.list(req, res);
+        break;
+      case 'POST':
+        await postController.create(req, res);
+        break;
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).send();
   }
-  res.status(200).send();
 }
