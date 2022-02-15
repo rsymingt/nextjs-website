@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../src/styles/Portfolio.module.css';
+import styles from '../styles/Portfolio.module.css';
 
 // TODO: #4 add portfolio projects @rsymingt
 
@@ -8,7 +8,8 @@ const portfolioData = {
   projects: [
     {
       title: 'First Robotics Competition',
-      banner: require('../src/public/portfolio/frc/arena.jpg'),
+      type: 'Robotics',
+      banner: require('../public/portfolio/frc/arena.jpg'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -45,7 +46,8 @@ const portfolioData = {
     },
     {
       title: 'Rotary Local Lager (CMS)',
-      banner: require('../src/public/portfolio/rll/rll.jpg'),
+      type: 'Development',
+      banner: require('../public/portfolio/rll/rll.jpg'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -85,7 +87,8 @@ const portfolioData = {
     },
     {
       title: 'React Web Workers (Fractals)',
-      banner: require('../src/public/portfolio/web-worker/fractal-snap.png'),
+      type: 'Development',
+      banner: require('../public/portfolio/web-worker/fractal-snap.png'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -122,7 +125,8 @@ const portfolioData = {
     },
     {
       title: 'Cloud Application (PWA)',
-      banner: require('../src/public/portfolio/cloud-ui/cloud-ui-1.png'),
+      type: 'Development',
+      banner: require('../public/portfolio/cloud-ui/cloud-ui-1.png'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -178,11 +182,13 @@ const portfolioData = {
       additional: {
         Language: 'React.js | Bootstrap | NodeJS (Express)',
         'Project Type': 'Full-Stack Application',
+        Stage: 'Complete',
       },
     },
     {
       title: 'Python Scraper',
-      banner: require('../src/public/portfolio/py-scraper/screen.png'),
+      type: 'Scripting',
+      banner: require('../public/portfolio/py-scraper/screen.png'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -254,11 +260,13 @@ const portfolioData = {
       additional: {
         Language: 'Python | Selenium',
         'Project Type': 'Script',
+        Stage: 'Complete',
       },
     },
     {
       title: 'NextJS Website',
-      banner: require('../src/public/portfolio/nextjs-website/screen.png'),
+      type: 'Development',
+      banner: require('../public/portfolio/nextjs-website/screen.png'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -275,6 +283,7 @@ const portfolioData = {
       additional: {
         Language: 'React.js | TailwindCSS | Next.js',
         'Project Type': 'Web Application',
+        Stage: 'Incomplete',
       },
     },
   ],
