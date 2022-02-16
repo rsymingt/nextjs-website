@@ -21,7 +21,8 @@ a {
 @tailwind utilities;
 
 .filter-vibrant-red {
-  filter: invert(11%) sepia(91%) saturate(6690%) hue-rotate(336deg) brightness(96%) contrast(103%);
+  filter: invert(11%) sepia(91%) saturate(6690%) hue-rotate(336deg)
+    brightness(96%) contrast(103%);
 }
 
 #Home .section {
@@ -30,20 +31,23 @@ a {
   @apply items-center justify-between max-w-full;
 }
 
-#Home .section h1,h2,h3,h4 {
+#Home .section h1,
+h2,
+h3,
+h4 {
   @apply text-white;
 }
 
 #Home .section:nth-child(even) {
-  @apply bg-neutral-900
+  @apply bg-neutral-900;
 }
 
 #Home .section:nth-child(odd) {
-  @apply bg-light-black
+  @apply bg-light-black;
 }
 
 #Home {
-  @apply font-montserrat
+  @apply font-montserrat;
 }
 
 #Home {

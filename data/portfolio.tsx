@@ -1,11 +1,15 @@
-import styles from "../styles/Portfolio.module.css";
+import React from 'react';
 
-export default {
+import styles from '../src/styles/Portfolio.module.css';
+
+// TODO: #4 add portfolio projects @rsymingt
+
+const portfolioData = {
   projects: [
     {
-      title: "First Robotics Competition",
-      type: "Robotics",
-      banner: require("../public/portfolio/frc/arena.jpg"),
+      title: 'First Robotics Competition',
+      type: 'Robotics',
+      banner: require('../public/portfolio/frc/arena.jpg'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -33,17 +37,17 @@ export default {
         );
       },
       githubURL:
-        "https://github.com/rsymingt/robot/tree/master/src/org/usfirst/frc/team5631/robot",
+        'https://github.com/rsymingt/robot/tree/master/src/org/usfirst/frc/team5631/robot',
       additional: {
-        Language: "Java",
-        "Project Type": "Robotics",
-        Stage: "Complete",
+        Language: 'Java',
+        'Project Type': 'Robotics',
+        Stage: 'Complete',
       },
     },
     {
-      title: "Rotary Local Lager (CMS)",
-      type: "Development",
-      banner: require("../public/portfolio/rll/rll.jpg"),
+      title: 'Rotary Local Lager (CMS)',
+      type: 'Development',
+      banner: require('../public/portfolio/rll/rll.jpg'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -66,7 +70,7 @@ export default {
             <p className="font-normal text-lg text-neutral-600 leading-10">
               As a Novice, I spent countless hours creating my own custom CMS
               components, authentication, and dynamic content generation.
-              Knowing what I know now I would've opted for a more modern
+              Knowing what I know now I would&apos;ve opted for a more modern
               language and utilized pre-existing libraries. However, this was an
               amazing learning experience and fun project to work with the
               Rotary Club on.
@@ -74,17 +78,17 @@ export default {
           </div>
         );
       },
-      githubURL: "https://github.com/rsymingt/rotary-local-lager-cms",
+      githubURL: 'https://github.com/rsymingt/rotary-local-lager-cms',
       additional: {
-        Language: "PHP | Bootstrap",
-        "Project Type": "Website (CMS)",
-        Stage: "Complete",
+        Language: 'PHP | Bootstrap',
+        'Project Type': 'Website (CMS)',
+        Stage: 'Complete',
       },
     },
     {
-      title: "React Web Workers (Fractals)",
-      type: "Development",
-      banner: require("../public/portfolio/web-worker/fractal-snap.png"),
+      title: 'React Web Workers (Fractals)',
+      type: 'Development',
+      banner: require('../public/portfolio/web-worker/fractal-snap.png'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -112,17 +116,17 @@ export default {
           </div>
         );
       },
-      githubURL: "https://github.com/rsymingt/react-website-web-workers",
+      githubURL: 'https://github.com/rsymingt/react-website-web-workers',
       additional: {
-        Language: "React.js | Bootstrap",
-        "Project Type": "Standalone Application",
-        Stage: "Incomplete",
+        Language: 'React.js | Bootstrap',
+        'Project Type': 'Standalone Application',
+        Stage: 'Incomplete',
       },
     },
     {
-      title: "Cloud Application (PWA)",
-      type: "Development",
-      banner: require("../public/portfolio/cloud-ui/cloud-ui-1.png"),
+      title: 'Cloud Application (PWA)',
+      type: 'Development',
+      banner: require('../public/portfolio/cloud-ui/cloud-ui-1.png'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -142,14 +146,14 @@ export default {
               <li>Cloud-UI</li>
             </ul>
             <br />
-            <h4 className={styles["heading-4"]}>Cloud-API</h4>
+            <h4 className={styles['heading-4']}>Cloud-API</h4>
             <br />
             <p className="font-normal text-lg text-neutral-600 leading-10">
               Manages CRUD operations to schedules table and local folder
               listings.
             </p>
             <br />
-            <h4 className={styles["heading-4"]}>Cloud-Retriever</h4>
+            <h4 className={styles['heading-4']}>Cloud-Retriever</h4>
             <br />
             <p className="font-normal text-lg text-neutral-600 leading-10">
               Listens to SQL table updates for file/folder cronjobs and only
@@ -158,7 +162,7 @@ export default {
               service and updates database with progress.
             </p>
             <br />
-            <h4 className={styles["heading-4"]}>Cloud-UI</h4>
+            <h4 className={styles['heading-4']}>Cloud-UI</h4>
             <br />
             <p className="font-normal text-lg text-neutral-600 leading-10">
               Designed to interact with the cloud-api to add, update and delete
@@ -174,24 +178,24 @@ export default {
           </div>
         );
       },
-      githubURL: "",
+      githubURL: '',
       additional: {
-        Language: "React.js | Bootstrap | NodeJS (Express)",
-        "Project Type": "Full-Stack Application",
-        Stage: "Complete",
+        Language: 'React.js | Bootstrap | NodeJS (Express)',
+        'Project Type': 'Full-Stack Application',
+        Stage: 'Complete',
       },
     },
     {
-      title: "Python Scraper",
-      type: "Scripting",
-      banner: require("../public/portfolio/py-scraper/screen.png"),
+      title: 'Python Scraper',
+      type: 'Scripting',
+      banner: require('../public/portfolio/py-scraper/screen.png'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
             <p className="font-normal text-2xl">
               Supply chain issues have made it difficult to find products in
-              stock. To solve this issue I've created a configurable web scraper
-              with the ability to recursively search.
+              stock. To solve this issue I&apos;ve created a configurable web
+              scraper with the ability to recursively search.
             </p>
             <br />
             <p className="font-normal text-lg text-neutral-600 leading-10">
@@ -202,43 +206,43 @@ export default {
               on the page if the matched list contains links.
             </p>
             <br />
-            <h4 className={styles["heading-4"]}>Example Configuration</h4>
+            <h4 className={styles['heading-4']}>Example Configuration</h4>
             <br />
             <div>
-              <pre className={styles["code-block"]}>
+              <pre className={styles['code-block']}>
                 <code>
                   {JSON.stringify(
                     {
-                      title: "Canada Computers DDR5",
-                      url: "https://www.canadacomputers.com/search/results_details.php?language=en&keywords=ddr5",
+                      title: 'Canada Computers DDR5',
+                      url: 'https://www.canadacomputers.com/search/results_details.php?language=en&keywords=ddr5',
                       loadmore: true,
-                      pageSelector: "#load_more",
-                      rootSelector: ".productTemplate",
-                      urlSelector: "link",
+                      pageSelector: '#load_more',
+                      rootSelector: '.productTemplate',
+                      urlSelector: 'link',
                       selectors: {
-                        title: ".productTemplate_title",
-                        link: ".productTemplate_title > a",
-                        price: ".pq-hdr-product_price",
-                        extra: ".addCartSearch",
+                        title: '.productTemplate_title',
+                        link: '.productTemplate_title > a',
+                        price: '.pq-hdr-product_price',
+                        extra: '.addCartSearch',
                       },
                       filterDict: {
                         title: [
-                          ["\\d+MHz", true],
-                          ["32GB", true],
-                          ["\\+", false],
+                          ['\\d+MHz', true],
+                          ['32GB', true],
+                          ['\\+', false],
                         ],
                       },
-                      notifyFilter: ["price", "title"],
-                      maxPages: "inf",
+                      notifyFilter: ['price', 'title'],
+                      maxPages: 'inf',
                       _scrape: {
-                        url: "link",
-                        rootSelector: ".page-product_info.container",
+                        url: 'link',
+                        rootSelector: '.page-product_info.container',
                         selectors: {
-                          availability: ".pi-prod-availability",
+                          availability: '.pi-prod-availability',
                           onlineStock:
-                            ".pi-prod-availability > span:first-of-type > i.fa-check",
+                            '.pi-prod-availability > span:first-of-type > i.fa-check',
                           storeStock:
-                            ".pi-prod-availability > span:nth-of-type(2) > i.fa-check",
+                            '.pi-prod-availability > span:nth-of-type(2) > i.fa-check',
                         },
                         filterDict: {},
                       },
@@ -252,17 +256,17 @@ export default {
           </div>
         );
       },
-      githubURL: "https://github.com/rsymingt/py-scraper",
+      githubURL: 'https://github.com/rsymingt/py-scraper',
       additional: {
-        Language: "Python | Selenium",
-        "Project Type": "Script",
-        Stage: "Complete",
+        Language: 'Python | Selenium',
+        'Project Type': 'Script',
+        Stage: 'Complete',
       },
     },
     {
-      title: "NextJS Website",
-      type: "Development",
-      banner: require("../public/portfolio/nextjs-website/screen.png"),
+      title: 'NextJS Website',
+      type: 'Development',
+      banner: require('../public/portfolio/nextjs-website/screen.png'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -275,12 +279,14 @@ export default {
           </div>
         );
       },
-      githubURL: "https://github.com/rsymingt/nextjs-website",
+      githubURL: 'https://github.com/rsymingt/nextjs-website',
       additional: {
-        Language: "React.js | TailwindCSS | Next.js",
-        "Project Type": "Web Application",
-        Stage: "Incomplete",
+        Language: 'React.js | TailwindCSS | Next.js',
+        'Project Type': 'Web Application',
+        Stage: 'Incomplete',
       },
     },
   ],
 };
+
+export default portfolioData;
