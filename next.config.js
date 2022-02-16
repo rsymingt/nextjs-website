@@ -3,7 +3,7 @@ const nextConfig = {
   // TODO: #6 add nextjs security headers @rsymingt
   reactStrictMode: true,
   experimental: {
-    // outputStandalone: true,
+    outputStandalone: true,
   },
   eslint: {
     dirs: ['src'],
