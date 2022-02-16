@@ -9,7 +9,7 @@ const portfolioData = {
     {
       title: 'First Robotics Competition',
       type: 'Robotics',
-      banner: require('../src/public/portfolio/frc/arena.jpg'),
+      banner: require('../public/portfolio/frc/arena.jpg'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -47,7 +47,7 @@ const portfolioData = {
     {
       title: 'Rotary Local Lager (CMS)',
       type: 'Development',
-      banner: require('../src/public/portfolio/rll/rll.jpg'),
+      banner: require('../public/portfolio/rll/rll.jpg'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -88,7 +88,7 @@ const portfolioData = {
     {
       title: 'React Web Workers (Fractals)',
       type: 'Development',
-      banner: require('../src/public/portfolio/web-worker/fractal-snap.png'),
+      banner: require('../public/portfolio/web-worker/fractal-snap.png'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -126,7 +126,7 @@ const portfolioData = {
     {
       title: 'Cloud Application (PWA)',
       type: 'Development',
-      banner: require('../src/public/portfolio/cloud-ui/cloud-ui-1.png'),
+      banner: require('../public/portfolio/cloud-ui/cloud-ui-1.png'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -188,7 +188,7 @@ const portfolioData = {
     {
       title: 'Python Scraper',
       type: 'Scripting',
-      banner: require('../src/public/portfolio/py-scraper/screen.png'),
+      banner: require('../public/portfolio/py-scraper/screen.png'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">
@@ -266,7 +266,7 @@ const portfolioData = {
     {
       title: 'NextJS Website',
       type: 'Development',
-      banner: require('../src/public/portfolio/nextjs-website/screen.png'),
+      banner: require('../public/portfolio/nextjs-website/screen.png'),
       description() {
         return (
           <div className="inline-flex flex-col gap-10">

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import * as postController from '../../controllers/post';
+// import * as postController from '../../controllers/post';
 
 export default async function handle(
   req: NextApiRequest,
@@ -8,10 +8,10 @@ export default async function handle(
 ) {
   switch (req.method) {
     case 'GET':
-      postController.list();
+      // postController.list();
       break;
     case 'POST':
-      postController.create();
+      // postController.create();
       break;
   }
   res.status(200).send();

@@ -1,36 +1,36 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import { Disclosure } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
-import classNames from 'classnames'
+import React, { Fragment, useEffect, useState } from 'react';
+import { Disclosure } from '@headlessui/react';
+import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import classNames from 'classnames';
 
-import LinkedInIcon from '../public/linkedin.svg'
-import GithubIcon from '../public/github.svg'
+import LinkedInIcon from '../../public/linkedin.svg';
+import GithubIcon from '../../public/github.svg';
 
-import config from '../../data/global'
+import config from '../../data/global';
 
 export default function Navbar({
   navigation,
   onNavClick,
   current,
 }: {
-  navigation: Navigation
-  onNavClick: (i: number) => void
-  current: number
+  navigation: Navigation;
+  onNavClick: (i: number) => void;
+  current: number;
 }) {
-  const [scrollPosition, setScrollPosition] = useState(0)
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   function handleScroll() {
-    const position = window.pageYOffset
-    setScrollPosition(position)
+    const position = window.pageYOffset;
+    setScrollPosition(position);
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <Disclosure
@@ -203,10 +203,10 @@ export default function Navbar({
         </>
       )}
     </Disclosure>
-  )
+  );
 }
 
 export type Navigation = Array<{
-  name: string
-  href: string
-}>
+  name: string;
+  href: string;
+}>;

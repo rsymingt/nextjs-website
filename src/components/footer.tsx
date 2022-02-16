@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import classNames from 'classnames'
+import classNames from 'classnames';
 
-import LinkedInIcon from '../public/linkedin.svg'
-import GithubIcon from '../public/github.svg'
+import LinkedInIcon from '../../public/linkedin.svg';
+import GithubIcon from '../../public/github.svg';
 
-import config from '../../data/global'
+import config from '../../data/global';
 
 export default function Footer() {
   return (
@@ -53,5 +53,5 @@ export default function Footer() {
         <h4>Powered by Next.js</h4>
       </span>
     </div>
-  )
+  );
 }

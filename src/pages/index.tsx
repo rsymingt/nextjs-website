@@ -15,8 +15,8 @@ import Navbar, { Navigation } from '../components/navbar';
 
 import portfolioData from '../../data/portfolio';
 
-import MeJPG from '../public/intro/me-cropped.jpg';
-import MapleLeafSVG from '../public/intro/maple-leaf.svg';
+import MeJPG from '../../public/intro/me-cropped.jpg';
+import MapleLeafSVG from '../../public/intro/maple-leaf.svg';
 
 import Footer from '../components/footer';
 import { ContactData } from './api/contact';
