@@ -10,16 +10,12 @@ export interface AuthRequest extends NextApiRequest {
   };
 }
 
-export default function (req: AuthRequest, res: NextApiResponse<void>) {
+export default async function (req: AuthRequest, res: NextApiResponse<void>) {
   switch (req.method) {
     case 'POST':
-      const authorized = authController.auth(req, res);
-      if (authorized) {
-        res.status(httpStatus.OK).send(); // send access token for re-auth
-      }
+      await authController.auth(req, res);
       break;
     default:
       res.status(httpStatus.METHOD_NOT_ALLOWED).send();
   }
-  res.status(httpStatus.UNAUTHORIZED).send();
 }
