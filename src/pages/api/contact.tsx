@@ -6,7 +6,6 @@ import { renderToStaticMarkup } from 'react-dom/server';
 
 import httpStatus from 'http-status';
 import nodemailer from 'nodemailer';
-import Post from '../../models/Post';
 
 import dotenv from 'dotenv';
 
