@@ -12,14 +12,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-Post.query()
-  .insert({
-    name: 'test',
-  })
-  .then((res) => {
-    console.log(res);
-  });
-
 const transporter = nodemailer.createTransport({
   port: 465,
   host: 'smtp.gmail.com',
