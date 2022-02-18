@@ -6,7 +6,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 
 import httpStatus from 'http-status';
 import nodemailer from 'nodemailer';
-import Post from '../../models/Post';
+import Post from '../../models/post';
 
 import dotenv from 'dotenv';
 
@@ -16,8 +16,8 @@ Post.query()
   .insert({
     name: 'test',
   })
-  .then((res) => {
-    console.log(res);
+  .then(() => {
+    console.log('added');
   });
 
 const transporter = nodemailer.createTransport({

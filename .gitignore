@@ -6,6 +6,9 @@
 .pnp.js
 .env
 
+# jest
+coverage
+
 # sqlite3
 dev.sqlite3
 

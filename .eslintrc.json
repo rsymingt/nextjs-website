@@ -3,6 +3,7 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:react/recommended",
+    "plugin:jest/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],

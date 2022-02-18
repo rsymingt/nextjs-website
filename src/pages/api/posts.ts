@@ -1,10 +1,11 @@
+import httpStatus from 'http-status';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 // import * as postController from '../../controllers/post';
 
 export default async function handle(
   req: NextApiRequest,
-  res: NextApiResponse<void>
+  res: NextApiResponse<void | Post[]>
 ) {
   switch (req.method) {
     case 'GET':
@@ -14,5 +15,4 @@ export default async function handle(
       // postController.create();
       break;
   }
-  res.status(200).send();
 }
