@@ -4,7 +4,8 @@ declare global {
       NODE_ENV: 'development' | 'production';
       SMTP_USER: string;
       SMTP_PASSWORD: string;
-      SMTP_CONTACT_EMAIL: string;
+      ADMIN_USER: string;
+      ADMIN_PASSWORD: string;
     }
   }
 }
