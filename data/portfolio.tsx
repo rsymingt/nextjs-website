@@ -81,7 +81,7 @@ const portfolioData = {
       githubURL: 'https://github.com/rsymingt/rotary-local-lager-cms',
       additional: {
         Language: 'PHP | Bootstrap',
-        'Project Type': 'Website (CMS)',
+        'Project Type': 'Web Development',
         Stage: 'Complete',
       },
     },
@@ -119,7 +119,7 @@ const portfolioData = {
       githubURL: 'https://github.com/rsymingt/react-website-web-workers',
       additional: {
         Language: 'React.js | Bootstrap',
-        'Project Type': 'Standalone Application',
+        'Project Type': 'Web Development',
         Stage: 'Incomplete',
       },
     },
@@ -265,7 +265,7 @@ const portfolioData = {
     },
     {
       title: 'NextJS Website',
-      type: 'Development',
+      type: 'Web Development',
       banner: require('../public/portfolio/nextjs-website/screen.png'),
       description() {
         return (
@@ -283,6 +283,62 @@ const portfolioData = {
       additional: {
         Language: 'React.js | TailwindCSS | Next.js',
         'Project Type': 'Web Application',
+        Stage: 'Incomplete',
+      },
+    },
+    {
+      title: 'Project Organization',
+      type: 'Command Line Tool',
+      banner: require('../public/portfolio/projecto/screen.png'),
+      description() {
+        return (
+          <div className="inline-flex flex-col gap-10">
+            <p className="font-normal text-2xl">
+              I needed a way to search through all my course notes for keywords
+              such as <q>AVL Tree</q> to find all occurence of the full word and
+              individual words for studying.
+            </p>
+            <br />
+            <p className="font-normal text-lg text-neutral-600 leading-10">
+              I developed a command line tool to utilize AVL trees to search
+              through text files for keywords efficiently.
+            </p>
+          </div>
+        );
+      },
+      githubURL: 'https://github.com/rsymingt/nextjs-website',
+      additional: {
+        Language: 'C++ | AVL Tree',
+        'Project Type': 'Command Line Tool',
+        Stage: 'Complete',
+      },
+    },
+    {
+      title: 'Microservices Framework',
+      type: 'Framework',
+      banner: require('../public/portfolio/microservices-framework/screen.png'),
+      description() {
+        return (
+          <div className="inline-flex flex-col gap-10">
+            <p className="font-normal text-2xl">
+              There doesn&apos;t seem to be an easy way to frame distributed
+              systems in a single repo and dynamically switch the type of system
+              being used (Thread, Container, AWS).
+            </p>
+            <br />
+            <p className="font-normal text-lg text-neutral-600 leading-10">
+              I am working on developing a framework to make it easier to keep
+              services in one project related to some sort of gateway and deploy
+              them to a specified production environment, while still being able
+              to test locally.
+            </p>
+          </div>
+        );
+      },
+      githubURL: '',
+      additional: {
+        Language: 'NodeJS',
+        'Project Type': 'Framework',
         Stage: 'Incomplete',
       },
     },

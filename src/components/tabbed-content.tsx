@@ -1,22 +1,22 @@
-import classNames from 'classnames'
-import React, { useState } from 'react'
+import classNames from 'classnames';
+import React, { useState } from 'react';
 
 export default function TabbedContent({
   tabbedContent,
 }: {
   tabbedContent: {
     [key: string]: Array<{
-      title: string
-      short: string
-      link?: string
-      description: string
-    }>
-  }
+      title: string;
+      short: string;
+      link?: string;
+      description: string;
+    }>;
+  };
 }) {
-  const [selected, setSelected] = useState(Object.keys(tabbedContent)[0])
+  const [selected, setSelected] = useState(Object.keys(tabbedContent)[0]);
 
   function tabHandler(tabTitle: string) {
-    setSelected(tabTitle)
+    setSelected(tabTitle);
   }
 
   return (
@@ -56,7 +56,7 @@ export default function TabbedContent({
                     key={`tabbedContent-content-p-${tabTitle}-${i}-${z}`}
                     className="text-base"
                   >
-                    <strong className="font-medium">{title}</strong> -{' '}
+                    <strong className="font-bold">{title}</strong> -{' '}
                     {link ? (
                       <a
                         className="hover:text-white"
@@ -77,5 +77,5 @@ export default function TabbedContent({
           ))}
       </div>
     </>
-  )
+  );
 }

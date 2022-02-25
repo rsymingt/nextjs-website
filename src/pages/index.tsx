@@ -201,7 +201,7 @@ function Portfolio({
           {portfolioData.projects
             .slice()
             .reverse()
-            .map(({ title, type, banner }, i) => (
+            .map(({ title, type, banner, additional: { Language } }, i) => (
               <a
                 key={`portfolio-${i}`}
                 href={`/portfolio/${portfolioData.projects.length - i - 1}`}
@@ -209,7 +209,7 @@ function Portfolio({
                 <div
                   className={classNames(
                     'relative grid grid-cols-1 grid-rows-2',
-                    'w-72 h-80 sm:w-72 sm:h-72 rounded-xl bg-neutral-900',
+                    'w-72 h-80 sm:w-80 sm:h-80 rounded-xl bg-neutral-900',
                     'transition-transform duration-300 ease-in-out hover:scale-110',
                     'hover:cursor-pointer'
                   )}
@@ -236,6 +236,7 @@ function Portfolio({
                   <span className="relative row-start-2 rounded-xl flex-1 inline-block text-center pointer-events-none">
                     <p className="my-3">{type ? type : 'Development'}</p>
                     <h4 className="my-3">{title}</h4>
+                    <p className="my-3">{Language ? Language : ''}</p>
                   </span>
                 </div>
               </a>
