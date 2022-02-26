@@ -7,6 +7,182 @@ import styles from '../src/styles/Portfolio.module.css';
 const portfolioData = {
   projects: [
     {
+      title: 'Weather App',
+      type: 'Android App',
+      banner: require('../public/portfolio/weather-app/screen.png'),
+      description() {
+        return (
+          <div className="inline-flex flex-col gap-10">
+            <p className="font-normal text-2xl">
+              In order to get some experience using the Android SDK. I Set out
+              to follow a tutorial to create a very basic weather app that
+              integrates with the weather open api.
+            </p>
+            <br />
+            <p className="font-normal text-lg text-neutral-600 leading-10"></p>
+          </div>
+        );
+      },
+      githubURL: 'https://github.com/rsymingt/Weather_App',
+      additional: {
+        Language: 'Java | AndroidSDK',
+        Stage: 'Complete',
+      },
+    },
+    {
+      title: 'Industry Code Classifier',
+      type: 'AI',
+      banner: require('../public/portfolio/industry-code-classifier/screen.png'),
+      description() {
+        return (
+          <div className="inline-flex flex-col gap-10">
+            <p className="font-normal text-2xl">
+              For our artificial intelligence final project. We set out to build
+              an industry code classifier. This would take a company description
+              as input and try to output an industry code that directly mapped
+              to the company.
+            </p>
+            <br />
+            <p className="font-normal text-lg text-neutral-600 leading-10">
+              Utilizing Supper Vector Machines, we set out to iteratively test
+              and train our model, modifying parameters until it was the best
+              the tool could offer. We ended up with a 89% accuracy.
+            </p>
+          </div>
+        );
+      },
+      githubURL: '/industry-code-classifier-master.zip',
+      additional: {
+        Language: 'Python | sklearn',
+        Stage: 'Complete',
+      },
+    },
+    {
+      title: 'Project Organization',
+      type: 'Command Line Tool',
+      banner: require('../public/portfolio/projecto/screen.png'),
+      description() {
+        return (
+          <div className="inline-flex flex-col gap-10">
+            <p className="font-normal text-2xl">
+              I needed a way to search through all my course notes for keywords
+              such as <q>AVL Tree</q> to find all occurence of the full word and
+              individual words for studying.
+            </p>
+            <br />
+            <p className="font-normal text-lg text-neutral-600 leading-10">
+              I developed a command line tool to utilize AVL trees to search
+              through text files for keywords efficiently.
+            </p>
+          </div>
+        );
+      },
+      githubURL: 'https://github.com/rsymingt/nextjs-website',
+      additional: {
+        Language: 'C++ | AVL Tree',
+        Stage: 'Complete',
+      },
+    },
+    {
+      title: 'Telegram Chat Streamer',
+      type: 'Script',
+      banner: require('../public/portfolio/telegram-app/screen.png'),
+      description() {
+        return (
+          <div className="inline-flex flex-col gap-10">
+            <p className="font-normal text-2xl">
+              Built a script to stream telegram chat data to a file for later
+              viewing.
+            </p>
+            <br />
+            <p className="font-normal text-lg text-neutral-600 leading-10"></p>
+          </div>
+        );
+      },
+      githubURL: 'https://github.com/rsymingt/telegram-app-pub',
+      additional: {
+        Language: 'Python',
+        Stage: 'Complete',
+      },
+    },
+    {
+      title: 'Dropbox Folder Sync',
+      type: 'Script',
+      banner: require('../public/portfolio/dropbox-sync/screen.png'),
+      description() {
+        return (
+          <div className="inline-flex flex-col gap-10">
+            <p className="font-normal text-2xl">
+              Built a script to sync a folder to any folder on dropbox.
+            </p>
+            <br />
+            <p className="font-normal text-lg text-neutral-600 leading-10"></p>
+          </div>
+        );
+      },
+      githubURL: 'https://github.com/rsymingt/python-dropbox-sync-pub',
+      additional: {
+        Language: 'Python',
+        Stage: 'Complete',
+      },
+    },
+    {
+      title: 'Signal Analyzer',
+      type: 'Library',
+      banner: require('../public/portfolio/signal-analyzer/screen.png'),
+      description() {
+        return (
+          <div className="inline-flex flex-col gap-10">
+            <p className="font-normal text-2xl">
+              Utilizing various libraries to extract Fourier Transforms and
+              Short Time Fourier Transforms and convert them to beat maps out of
+              audio files, as an experiment to be used in a tap tap revolution
+              style game. This game would allow a user to upload any sound file
+              and have a beat map generated at a precise difficulty.
+            </p>
+            <br />
+            <p className="font-normal text-lg text-neutral-600 leading-10"></p>
+          </div>
+        );
+      },
+      githubURL: 'https://github.com/rsymingt/SignalAnalyzer',
+      additional: {
+        Language: 'Java | STFT | FT',
+        Stage: 'Complete',
+      },
+    },
+    {
+      title: 'Space Simulator',
+      type: 'Game',
+      banner: require('../public/portfolio/space-simulator/screen.png'),
+      description() {
+        return (
+          <div className="inline-flex flex-col gap-10">
+            <p className="font-normal text-2xl">
+              For my final project for physics class in high-school. I decided
+              to program our solar systems with planets in perfect elyptical
+              orbits.
+            </p>
+            <br />
+            <p className="font-normal text-lg text-neutral-600 leading-10">
+              I programmed real-world physics into the simulation. You could
+              follow a planet as it travels around the sun or a moon as it
+              travels around a planet. The user also had the ability to add in
+              objects of a chosen mass and velocity utilizing the mouse pointer.
+              The system would then pause the game and simulate the trajectory
+              of the mass at the given velocity. This allowed you to get an idea
+              of how to get the object into the orbit the user wanted.
+            </p>
+          </div>
+        );
+      },
+      githubURL: 'https://github.com/rsymingt/space_simulator',
+      additional: {
+        Language: 'Java | Processing',
+        Stage: 'Complete',
+      },
+    },
+    {
       title: 'First Robotics Competition',
       type: 'Robotics',
       banner: require('../public/portfolio/frc/arena.jpg'),
@@ -40,13 +216,12 @@ const portfolioData = {
         'https://github.com/rsymingt/robot/tree/master/src/org/usfirst/frc/team5631/robot',
       additional: {
         Language: 'Java',
-        'Project Type': 'Robotics',
         Stage: 'Complete',
       },
     },
     {
       title: 'Rotary Local Lager (CMS)',
-      type: 'Development',
+      type: 'Web Development',
       banner: require('../public/portfolio/rll/rll.jpg'),
       description() {
         return (
@@ -81,13 +256,12 @@ const portfolioData = {
       githubURL: 'https://github.com/rsymingt/rotary-local-lager-cms',
       additional: {
         Language: 'PHP | Bootstrap',
-        'Project Type': 'Web Development',
         Stage: 'Complete',
       },
     },
     {
       title: 'React Web Workers (Fractals)',
-      type: 'Development',
+      type: 'Web Development',
       banner: require('../public/portfolio/web-worker/fractal-snap.png'),
       description() {
         return (
@@ -119,13 +293,12 @@ const portfolioData = {
       githubURL: 'https://github.com/rsymingt/react-website-web-workers',
       additional: {
         Language: 'React.js | Bootstrap',
-        'Project Type': 'Web Development',
         Stage: 'Incomplete',
       },
     },
     {
       title: 'Cloud Application (PWA)',
-      type: 'Development',
+      type: 'Full-Stack Application',
       banner: require('../public/portfolio/cloud-ui/cloud-ui-1.png'),
       description() {
         return (
@@ -181,13 +354,12 @@ const portfolioData = {
       githubURL: '',
       additional: {
         Language: 'React.js | Bootstrap | NodeJS (Express)',
-        'Project Type': 'Full-Stack Application',
         Stage: 'Complete',
       },
     },
     {
       title: 'Python Scraper',
-      type: 'Scripting',
+      type: 'Script',
       banner: require('../public/portfolio/py-scraper/screen.png'),
       description() {
         return (
@@ -259,7 +431,6 @@ const portfolioData = {
       githubURL: 'https://github.com/rsymingt/py-scraper',
       additional: {
         Language: 'Python | Selenium',
-        'Project Type': 'Script',
         Stage: 'Complete',
       },
     },
@@ -287,33 +458,6 @@ const portfolioData = {
       },
     },
     {
-      title: 'Project Organization',
-      type: 'Command Line Tool',
-      banner: require('../public/portfolio/projecto/screen.png'),
-      description() {
-        return (
-          <div className="inline-flex flex-col gap-10">
-            <p className="font-normal text-2xl">
-              I needed a way to search through all my course notes for keywords
-              such as <q>AVL Tree</q> to find all occurence of the full word and
-              individual words for studying.
-            </p>
-            <br />
-            <p className="font-normal text-lg text-neutral-600 leading-10">
-              I developed a command line tool to utilize AVL trees to search
-              through text files for keywords efficiently.
-            </p>
-          </div>
-        );
-      },
-      githubURL: 'https://github.com/rsymingt/nextjs-website',
-      additional: {
-        Language: 'C++ | AVL Tree',
-        'Project Type': 'Command Line Tool',
-        Stage: 'Complete',
-      },
-    },
-    {
       title: 'Microservices Framework',
       type: 'Framework',
       banner: require('../public/portfolio/microservices-framework/screen.png'),
@@ -338,7 +482,6 @@ const portfolioData = {
       githubURL: '',
       additional: {
         Language: 'NodeJS',
-        'Project Type': 'Framework',
         Stage: 'Incomplete',
       },
     },
