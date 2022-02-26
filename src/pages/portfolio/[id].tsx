@@ -33,13 +33,15 @@ export default function PortfolioPage() {
           <project.description />
           <div className="flex flex-wrap gap-x-10 gap-y-2 pt-2">
             {project.additional &&
-              Object.entries(project.additional).map(([key, value], i) => (
-                <span key={`additional-${i}`} className="w-fit">
-                  <span className="text-neutral-500 font-medium">{key}</span>
-                  <br />
-                  <span className="text-2xl font-medium">{value}</span>
-                </span>
-              ))}
+              Object.entries(project.additional)
+                .concat([['Project Type', project.type]])
+                .map(([key, value], i) => (
+                  <span key={`additional-${i}`} className="w-fit">
+                    <span className="text-neutral-500 font-medium">{key}</span>
+                    <br />
+                    <span className="text-2xl font-medium">{value}</span>
+                  </span>
+                ))}
             {Boolean(project.githubURL?.length) && (
               <span className="w-fit">
                 <span className="text-neutral-500 font-medium">
