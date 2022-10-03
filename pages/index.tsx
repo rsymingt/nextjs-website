@@ -83,7 +83,7 @@ const Home: NextPage = () => {
                 <Intro id="Home" handleScroll={handleScroll}/>
                 <About id="About" handleScroll={handleScroll}/>
                 <Portfolio id="Portfolio" handleScroll={handleScroll}/>
-                <Contact id="Contact" handleScroll={handleScroll}/>
+                {/* <Contact id="Contact" handleScroll={handleScroll}/> */}
             </div>
             <Footer/>
         </div>
