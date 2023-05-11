@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  client:
+    image: nextjs-website
+    build: .
+    restart: unless-stopped
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.website.entrypoints=web'
+      - 'traefik.http.routers.website.rule=Host(`website.loc`)'
+      - 'traefik.http.routers.website.service=website'
+      - 'traefik.http.services.website.loadbalancer.server.port=80'
+      - 'traefik.docker.network=web'
+      - 'traefik.http.routers.website-secure.entrypoints=websecure'
+      - 'traefik.http.routers.website-secure.rule=Host(`website.rsymington.com`)'
+      # - "traefik.http.routers.website-server-secure.tls=true"
+      - 'traefik.http.routers.website-secure.tls.certresolver=myresolver'
+      ## Middlewares
+      #            - "traefik.http.routers.website-secure.middlewares=chain-oauth@file"
+      ## HTTP Services
+      - 'traefik.http.routers.website-secure.service=website-secure'
+      - 'traefik.http.services.website-secure.loadbalancer.server.port=3000'
+    #            - "traefik.http.middlewares.testHeader.headers.customrequestheaders.Cache-Control=no-cache"
+    #            - "traefik.http.middlewares.testHeader.headers.customrequestheaders.Pragma=no-cache"
+    #            - "traefik.http.routers.website-secure.middlewares=no-cache@docker"
+    volumes:
+      - /home/pi/service-volumes/nextjs-website-db-data:/app/db-data
+    networks:
+      - web
+
+networks:
+  web:
+    external: true

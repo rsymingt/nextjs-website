@@ -1,0 +1,15 @@
+
+.list {
+    list-style-type: disc;
+    margin-left: 3rem;
+  
+    @apply text-neutral-600 font-normal;
+}
+
+.heading-4 {
+    @apply text-black text-2xl font-bold;
+}
+
+.code-block {
+    @apply bg-neutral-900 text-white overflow-auto;
+}

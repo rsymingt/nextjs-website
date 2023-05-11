@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://website.rsymington.com
+
+# Sitemaps
+Sitemap: https://website.rsymington.com/sitemap.xml
+Sitemap: https://website.rsymington.com/server-sitemap-index.xml

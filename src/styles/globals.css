@@ -1,0 +1,82 @@
+html,
+body {
+  @apply bg-light-black;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.filter-vibrant-red {
+  filter: invert(11%) sepia(91%) saturate(6690%) hue-rotate(336deg)
+    brightness(96%) contrast(103%);
+}
+
+#main .section {
+  min-height: calc(100vh + 64px);
+  /* max-height: calc(100vh + 64px); */
+  @apply items-center justify-between max-w-full;
+}
+
+#main .section h1,
+h2,
+h3,
+h4 {
+  @apply text-white;
+}
+
+#main .section:nth-child(even) {
+  @apply bg-neutral-900;
+}
+
+#main .section:nth-child(odd) {
+  @apply bg-light-black;
+}
+
+#main {
+  @apply font-montserrat;
+}
+
+#main {
+  @apply text-zinc-400;
+}
+
+p {
+  @apply font-light;
+}
+
+h1 {
+  @apply text-2xl sm:leading-snug sm:text-4xl md:leading-snug md:text-5xl font-black;
+}
+
+h2 {
+  @apply text-xl sm:leading-snug sm:text-3xl md:leading-snug md:text-4xl font-black;
+}
+
+h3 {
+  @apply text-lg sm:leading-snug sm:text-2xl md:leading-snug md:text-3xl font-black;
+}
+
+h4 {
+  @apply text-base sm:leading-snug sm:text-xl md:leading-snug md:text-2xl font-bold;
+}
+
+#main .intro-img {
+  min-width: 0% !important;
+  max-width: fit-content !important;
+  width: auto !important;
+  margin: auto 0 auto auto !important;
+}
