@@ -1,13 +1,6 @@
 import type { NextPage } from 'next';
 
-import React, {
-  MutableRefObject,
-  RefObject,
-  forwardRef,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import classNames from 'classnames';
@@ -87,133 +80,127 @@ const Home: NextPage = () => {
   );
 };
 
-interface IntroProps {}
-
-const Intro = forwardRef<HTMLElement, IntroProps>(({}, ref) => {
-  return (
-    <Section ref={ref} className="flex relative">
-      <div className="container grid lg:grid-cols-3 w-full px-9">
-        <div className="w-fit mx-auto col-span-2 text-white z-20 text-left">
-          <h1>
-            Hi, I&rsquo;m Ryan Symington
-            <TextCarousell
-              className="text-vibrant-red font-black"
-              timeout={5000}
-              selections={[
-                'Full-Stack Developer.',
-                'NodeJS Developer.',
-                'React Developer.',
-              ]}
-            />
-            <div className="h-12 w-12 sm:w-16 sm:h-16 md:h-20 md:w-20">
-              <MapleLeafSVG className="w-full h-full" />
-            </div>
-          </h1>
-        </div>
-        <div className="col-span-1">
-          <div className="absolute inset-0">
-            <Image
-              className={classNames(
-                'intro-img',
-                'grayscale opacity-90',
-                'gradient-mask-l-0'
-              )}
-              objectFit="cover"
-              layout="fill"
-              src={MeJPG}
-              alt="Ryan Symington"
-              placeholder="blur"
-              quality={50}
-              objectPosition="right"
-            />
+const Intro = forwardRef<HTMLElement>(({}, ref) => (
+  <Section ref={ref} className="flex relative">
+    <div className="container grid lg:grid-cols-3 w-full px-9">
+      <div className="w-fit mx-auto col-span-2 text-white z-20 text-left">
+        <h1>
+          Hi, I&rsquo;m Ryan Symington
+          <TextCarousell
+            className="text-vibrant-red font-black"
+            timeout={5000}
+            selections={[
+              'Full-Stack Developer.',
+              'NodeJS Developer.',
+              'React Developer.',
+            ]}
+          />
+          <div className="h-12 w-12 sm:w-16 sm:h-16 md:h-20 md:w-20">
+            <MapleLeafSVG className="w-full h-full" />
           </div>
+        </h1>
+      </div>
+      <div className="col-span-1">
+        <div className="absolute inset-0">
+          <Image
+            className={classNames(
+              'intro-img',
+              'grayscale opacity-90',
+              'gradient-mask-l-0'
+            )}
+            objectFit="cover"
+            layout="fill"
+            src={MeJPG}
+            alt="Ryan Symington"
+            placeholder="blur"
+            quality={50}
+            objectPosition="right"
+          />
         </div>
       </div>
-    </Section>
-  );
-});
+    </div>
+  </Section>
+));
 
-interface AboutProps {}
+Intro.displayName = 'Intro';
 
-const About = forwardRef<HTMLElement, AboutProps>(({}, ref) => {
+const About = forwardRef<HTMLElement>(({}, ref) => (
   // TODO: #3 Add ability to scroll excess TabbedContent
-  return (
-    <Section ref={ref}>
-      <div className="container px-9 w-full sm:w-1/3 lg:w-1/2 md:flex">
-        <div className="flex flex-1 flex-col">
-          <h1 className="text-center">About Me</h1>
-          <p className="mt-4 mb-6 text-lg">
-            It&apos;s been nearly 10 years since devoting myself to studying
-            programming. I&apos;ve collaborated with very talented people to
-            build Full-Stack MERN Applications and Python/NodeJS Microservices
-            for internal and external use. I&apos;m familiar with utilizing the
-            DevOps lifecycle to continuously deploy reliable code with traceable
-            monitoring. I&apos;m quietly confident, always seeking a challenge,
-            and constantly working to improve and grow my skills and knowledge.
-          </p>
-          <TabbedContent tabbedContent={aboutData.tabbedContent} />
-        </div>
+  <Section ref={ref}>
+    <div className="container px-9 w-full sm:w-1/3 lg:w-1/2 md:flex">
+      <div className="flex flex-1 flex-col">
+        <h1 className="text-center">About Me</h1>
+        <p className="mt-4 mb-6 text-lg">
+          It&apos;s been nearly 10 years since devoting myself to studying
+          programming. I&apos;ve collaborated with very talented people to build
+          Full-Stack MERN Applications and Python/NodeJS Microservices for
+          internal and external use. I&apos;m familiar with utilizing the DevOps
+          lifecycle to continuously deploy reliable code with traceable
+          monitoring. I&apos;m quietly confident, always seeking a challenge,
+          and constantly working to improve and grow my skills and knowledge.
+        </p>
+        <TabbedContent tabbedContent={aboutData.tabbedContent} />
       </div>
-    </Section>
-  );
-});
+    </div>
+  </Section>
+));
 
-interface PortfolioProps {}
+About.displayName = 'About';
 
-const Portfolio = forwardRef<HTMLElement, PortfolioProps>(({}, ref) => {
-  return (
-    <Section ref={ref}>
-      <div className="container px-9 w-full flex flex-col items-center justify-center">
-        <h1 className="mb-4">Portfolio</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
-          {portfolioData.projects
-            .slice()
-            .reverse()
-            .map(({ title, type, banner, additional: { Language } }, i) => (
-              <a
-                key={`portfolio-${i}`}
-                href={`/portfolio/${portfolioData.projects.length - i - 1}`}
+const Portfolio = forwardRef<HTMLElement>(({}, ref) => (
+  <Section ref={ref}>
+    <div className="container px-9 w-full flex flex-col items-center justify-center">
+      <h1 className="mb-4">Portfolio</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
+        {portfolioData.projects
+          .slice()
+          .reverse()
+          .map(({ title, type, banner, additional: { Language } }, i) => (
+            <a
+              key={`portfolio-${i}`}
+              href={`/portfolio/${portfolioData.projects.length - i - 1}`}
+            >
+              <div
+                className={classNames(
+                  'relative grid grid-cols-1 grid-rows-2',
+                  'w-72 h-80 sm:w-80 sm:h-80 rounded-xl bg-neutral-900',
+                  'transition-transform duration-300 ease-in-out hover:scale-110',
+                  'hover:cursor-pointer'
+                )}
               >
+                <Image
+                  className="absolute rounded-t-xl top-0 left-0 opacity-75"
+                  src={banner}
+                  alt={title}
+                  placeholder="blur"
+                />
                 <div
                   className={classNames(
-                    'relative grid grid-cols-1 grid-rows-2',
-                    'w-72 h-80 sm:w-80 sm:h-80 rounded-xl bg-neutral-900',
-                    'transition-transform duration-300 ease-in-out hover:scale-110',
-                    'hover:cursor-pointer'
+                    'absolute inset-0 bg-black opacity-50 rounded-xl pointer-events-none'
                   )}
-                >
-                  <Image
-                    className="absolute rounded-t-xl top-0 left-0 opacity-75"
-                    src={banner}
-                    alt={title}
-                    placeholder="blur"
-                  />
-                  <div
-                    className={classNames(
-                      'absolute inset-0 bg-black opacity-50 rounded-xl pointer-events-none'
-                    )}
-                  ></div>
-                  <div
-                    className={classNames(
-                      'absolute inset-0 bg-gradient-to-b from-vibrant-red opacity-0 rounded-xl',
-                      'transition-all',
-                      'hover:bg-gradient-to-b sm:hover:from-vibrant-red sm:hover:via-vibrant-red sm:hover:to-transparent sm:hover:opacity-80',
-                      'active:opacity-0'
-                    )}
-                  ></div>
-                  <span className="relative row-start-2 rounded-xl flex-1 inline-block text-center pointer-events-none">
-                    <p className="my-3">{type ? type : 'Development'}</p>
-                    <h4 className="my-3">{title}</h4>
-                    <p className="my-3">{Language ? Language : ''}</p>
-                  </span>
-                </div>
-              </a>
-            ))}
-        </div>
+                ></div>
+                <div
+                  className={classNames(
+                    'absolute inset-0 bg-gradient-to-b from-vibrant-red opacity-0 rounded-xl',
+                    'transition-all',
+                    'hover:bg-gradient-to-b sm:hover:from-vibrant-red sm:hover:via-vibrant-red sm:hover:to-transparent sm:hover:opacity-80',
+                    'active:opacity-0'
+                  )}
+                ></div>
+                <span className="relative row-start-2 rounded-xl flex-1 inline-block text-center pointer-events-none">
+                  <p className="my-3">{type ? type : 'Development'}</p>
+                  <h4 className="my-3">{title}</h4>
+                  <p className="my-3">{Language ? Language : ''}</p>
+                </span>
+              </div>
+            </a>
+          ))}
       </div>
-    </Section>
-  );
-});
+    </div>
+  </Section>
+));
+
+Portfolio.displayName = 'Portfolio';
 
 // TODO: #11 add Blog Section @rsymingt
 
