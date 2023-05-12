@@ -37,7 +37,7 @@ const aboutData = {
         description: '2020 - 2022',
       },
       {
-        title: 'Full-Stack Web Developer',
+        title: 'Full-Stack Web Developer - Volunteer',
         short: 'Rotary Club of Guelph',
         description: '2018 - 2020',
       },

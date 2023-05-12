@@ -18,6 +18,7 @@ import MapleLeafSVG from '../../public/intro/maple-leaf.svg';
 
 import Footer from '../components/footer';
 import { useRouter } from 'next/router';
+import scrollIntoViewWithInterupt from '../utils/scrollIntoViewWithInterrupt';
 
 const navigation: Navigation = [
   { name: 'Home', href: '#Home' },
@@ -34,6 +35,12 @@ const Home: NextPage = () => {
 
   function handleNavbarClick(i: number) {
     setNavSelected(i);
+
+    const el = navRefs.current[i];
+
+    if (el) {
+      scrollIntoViewWithInterupt(el);
+    }
   }
 
   useEffect(() => {
@@ -41,23 +48,14 @@ const Home: NextPage = () => {
 
     const i = navigation.findIndex((item) => item.name === hash);
 
-    console.log(i);
+    setNavSelected(i);
 
-    setTimeout(() => {
-      setNavSelected(i);
-    }, 1000);
-  }, [asPath]);
-
-  useEffect(() => {
-    const el = navRefs.current[navSelected];
-    console.log('HERE', el);
+    const el = navRefs.current[i];
 
     if (el) {
-      el.scrollIntoView({
-        behavior: 'smooth',
-      });
+      scrollIntoViewWithInterupt(el, 1000);
     }
-  }, [navSelected]);
+  }, [asPath]);
 
   return (
     <div id="main">

@@ -194,6 +194,7 @@ export default function Navbar({
                     'block px-3 py-2 rounded-md text-base font-medium'
                   )}
                   aria-current={i === current ? 'page' : undefined}
+                  onClick={() => onNavClick(i)}
                 >
                   {item.name}
                 </Disclosure.Button>

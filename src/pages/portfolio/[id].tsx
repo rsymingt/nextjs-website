@@ -2,23 +2,25 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import portfolioData from '../../../data/portfolio';
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import Head from 'next/head';
+import scrollIntoViewWithInterupt from '../../utils/scrollIntoViewWithInterrupt';
 
 export default function PortfolioPage() {
-  const textRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false);
   const router = useRouter();
   const { id } = router.query;
 
-  useEffect(() => {
-    setTimeout(() => {
-      console.log(textRef);
-      textRef.current?.scrollIntoView({
-        behavior: 'smooth',
-      });
-    }, 1000);
-  }, []);
+  const headerRef = useCallback(
+    (el) => {
+      if (el && !scrolled) {
+        scrollIntoViewWithInterupt(el, 500);
+        setScrolled(true);
+      }
+    },
+    [scrolled]
+  );
 
   if (!id || Number.isNaN(id)) {
     return <h1>Invalid URL</h1>;
@@ -39,7 +41,7 @@ export default function PortfolioPage() {
           alt={project.title}
         />
         <div
-          ref={textRef}
+          ref={headerRef}
           className="container max-w-screen-md px-8 mt-4 flex flex-col space-y-4"
         >
           <h1 className="font-bold pb-6 border-b-1">{project.title}</h1>
