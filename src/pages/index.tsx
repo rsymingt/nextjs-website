@@ -48,7 +48,9 @@ const Home: NextPage = () => {
 
     const i = navigation.findIndex((item) => item.name === hash);
 
-    setNavSelected(i);
+    if (i >= 0) {
+      setNavSelected(i);
+    }
 
     const el = navRefs.current[i];
 
