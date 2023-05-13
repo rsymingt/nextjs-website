@@ -57,6 +57,60 @@ const Home: NextPage = () => {
     }
   }, [asPath]);
 
+  useEffect(() => {
+    // function isIntersecting(intersecting: boolean, navRefIndex: number) {}
+
+    const observers: IntersectionObserver[] = [];
+
+    navRefs.current.forEach((el, i) => {
+      if (el) {
+        let previousY = 0;
+        let previousRatio = 0;
+
+        const observer = new IntersectionObserver(
+          // eslint-disable-next-line complexity
+          ([entry]) => {
+            // isIntersecting(entry.isIntersecting, i);
+            const currentY = entry.boundingClientRect.y;
+            const currentRatio = entry.intersectionRatio;
+            const isIntersecting = entry.isIntersecting;
+
+            // Scrolling down/up
+            if (currentY < previousY) {
+              if (currentRatio > previousRatio && isIntersecting) {
+                // 'Scrolling down enter';
+                setNavSelected(i);
+              } else {
+                // 'Scrolling down leave';
+                setNavSelected(i < navRefs.current.length - 1 ? i + 1 : i);
+              }
+            } else if (currentY > previousY && isIntersecting) {
+              if (currentRatio < previousRatio) {
+                // 'Scrolling up leave';
+                setNavSelected(i > 0 ? i - 1 : i);
+              } else {
+                // 'Scrolling up enter';
+                setNavSelected(i);
+              }
+            }
+
+            previousY = currentY;
+            previousRatio = currentRatio;
+          },
+          { threshold: 0.51 }
+        );
+
+        observer.observe(el);
+
+        observers.push(observer);
+      }
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
+
   return (
     <div id="main">
       <Head>
