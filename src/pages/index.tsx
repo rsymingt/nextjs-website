@@ -315,6 +315,8 @@ const Contact = forwardRef<HTMLElement>(({}, ref) => {
     <Section ref={ref}>
       <div className="container relative px-9 w-full sm:w-1/2 md:flex md:flex-col">
         <h1 className="mb-2">Contact Me</h1>
+        <p>I am open for freelance work or just to chat &#128515;</p>
+        <br />
 
         <input
           {...register('name', {
