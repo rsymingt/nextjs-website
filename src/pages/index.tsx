@@ -1,6 +1,12 @@
 import type { NextPage } from 'next';
 
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import classNames from 'classnames';
@@ -33,8 +39,27 @@ const Home: NextPage = () => {
   const navRefs = useRef<Array<HTMLElement | null>>(Array(navigation.length));
   const [navSelected, setNavSelected] = useState(0);
 
+  const setNav = useCallback(
+    (i: number) => {
+      const newUrl = `/#${navigation[navSelected].name}`;
+
+      setNavSelected(i);
+
+      window.history.replaceState(
+        {
+          ...window.history.state,
+          as: newUrl,
+          url: newUrl,
+        },
+        '',
+        newUrl
+      );
+    },
+    [navSelected]
+  );
+
   function handleNavbarClick(i: number) {
-    setNavSelected(i);
+    setNav(i);
 
     const el = navRefs.current[i];
 
@@ -49,15 +74,13 @@ const Home: NextPage = () => {
     const i = navigation.findIndex((item) => item.name === hash);
 
     if (i >= 0) {
-      setNavSelected(i);
-    }
+      const el = navRefs.current[i];
 
-    const el = navRefs.current[i];
-
-    if (el) {
-      scrollIntoViewWithInterupt(el, 1000);
+      if (el) {
+        scrollIntoViewWithInterupt(el, 500);
+      }
     }
-  }, [asPath]);
+  }, [asPath, setNav]);
 
   useEffect(() => {
     // function isIntersecting(intersecting: boolean, navRefIndex: number) {}
@@ -81,18 +104,18 @@ const Home: NextPage = () => {
             if (currentY < previousY) {
               if (currentRatio > previousRatio && isIntersecting) {
                 // 'Scrolling down enter';
-                setNavSelected(i);
+                setNav(i);
               } else {
                 // 'Scrolling down leave';
-                setNavSelected(i < navRefs.current.length - 1 ? i + 1 : i);
+                setNav(i < navRefs.current.length - 1 ? i + 1 : i);
               }
             } else if (currentY > previousY && isIntersecting) {
               if (currentRatio < previousRatio) {
                 // 'Scrolling up leave';
-                setNavSelected(i > 0 ? i - 1 : i);
+                setNav(i > 0 ? i - 1 : i);
               } else {
                 // 'Scrolling up enter';
-                setNavSelected(i);
+                setNav(i);
               }
             }
 
@@ -111,7 +134,7 @@ const Home: NextPage = () => {
     return () => {
       observers.forEach((observer) => observer.disconnect());
     };
-  }, []);
+  }, [setNav]);
 
   return (
     <div id="main">
