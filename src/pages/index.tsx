@@ -108,12 +108,12 @@ const Home: NextPage = () => {
                 setNav(i);
               } else {
                 // 'Scrolling down leave';
-                setNav(i < navRefs.current.length - 1 ? i + 1 : i);
+                // setNav(i < navRefs.current.length - 1 ? i + 1 : i);
               }
             } else if (currentY > previousY && isIntersecting) {
               if (currentRatio < previousRatio) {
                 // 'Scrolling up leave';
-                setNav(i > 0 ? i - 1 : i);
+                // setNav(i > 0 ? i - 1 : i);
               } else {
                 // 'Scrolling up enter';
                 setNav(i);
@@ -123,7 +123,7 @@ const Home: NextPage = () => {
             previousY = currentY;
             previousRatio = currentRatio;
           },
-          { threshold: 0.51 }
+          { threshold: 0, rootMargin: '-51% 0% -49% 0%' }
         );
 
         observer.observe(el);
