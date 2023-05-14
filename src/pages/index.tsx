@@ -25,12 +25,15 @@ import MapleLeafSVG from '../../public/intro/maple-leaf.svg';
 import Footer from '../components/footer';
 import { useRouter } from 'next/router';
 import scrollIntoViewWithInterupt from '../utils/scrollIntoViewWithInterrupt';
+import { Transition } from '@headlessui/react';
+import { useForm } from 'react-hook-form';
+import { ContactData } from './api/contact';
 
 const navigation: Navigation = [
   { name: 'Home', href: '#Home' },
   { name: 'About', href: '#About' },
   { name: 'Portfolio', href: '#Portfolio' },
-  // { name: 'Contact', href: '#Contact' },
+  { name: 'Contact', href: '#Contact' },
 ];
 
 const Home: NextPage = () => {
@@ -83,8 +86,6 @@ const Home: NextPage = () => {
   }, [asPath, setNav]);
 
   useEffect(() => {
-    // function isIntersecting(intersecting: boolean, navRefIndex: number) {}
-
     const observers: IntersectionObserver[] = [];
 
     navRefs.current.forEach((el, i) => {
@@ -150,7 +151,7 @@ const Home: NextPage = () => {
         <Intro ref={(el) => (navRefs.current[0] = el)} />
         <About ref={(el) => (navRefs.current[1] = el)} />
         <Portfolio ref={(el) => (navRefs.current[2] = el)} />
-        {/* <Contact id="Contact" handleScroll={handleScroll} /> */}
+        <Contact ref={(el) => (navRefs.current[3] = el)} />
       </div>
       <Footer />
     </div>
@@ -281,132 +282,117 @@ Portfolio.displayName = 'Portfolio';
 
 // TODO: #11 add Blog Section @rsymingt
 
-// function Contact({
-//   id,
-//   handleScroll,
-// }: {
-//   id: string;
-//   handleScroll: (ref: RefObject<HTMLElement>) => void;
-// }) {
-//   const contactRef = useRef<HTMLElement>(null);
+const Contact = forwardRef<HTMLElement>(({}, ref) => {
+  const { register, handleSubmit, reset } = useForm<ContactData>();
 
-//   const { register, handleSubmit, reset } = useForm<ContactData>();
+  const [status, setStatus] = useState<boolean | string>(false);
 
-//   const [status, setStatus] = useState<boolean | string>(false);
+  async function onSubmit(data: ContactData) {
+    reset({
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    });
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }).then((res) => {
+      if (res.status === 200) {
+        setStatus('Success');
+      } else {
+        setStatus('Failed');
+      }
+      setTimeout(() => setStatus(false), 5000);
+    });
+  }
 
-//   function _handleScroll() {
-//     handleScroll(contactRef);
-//   }
+  return (
+    <Section ref={ref}>
+      <div className="container relative px-9 w-full sm:w-1/2 md:flex md:flex-col">
+        <h1 className="mb-2">Contact Me</h1>
 
-//   async function onSubmit(data: ContactData) {
-//     reset({
-//       name: '',
-//       email: '',
-//       subject: '',
-//       message: '',
-//     });
-//     fetch('/api/contact', {
-//       method: 'POST',
-//       headers: {
-//         Accept: 'application/json, text/plain, */*',
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(data),
-//     }).then((res) => {
-//       if (res.status === 200) {
-//         setStatus('Success');
-//       } else {
-//         setStatus('Failed');
-//       }
-//       setTimeout(() => setStatus(false), 5000);
-//     });
-//   }
+        <input
+          {...register('name', {
+            required: true,
+          })}
+          className={classNames(
+            'w-full sm:w-auto rounded-md border-2 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
+            'transition-all focus:border-neutral-500 focus:scale-105'
+          )}
+          placeholder="Your Name *"
+          type="text"
+        />
 
-//   useEffect(() => {
-//     window.addEventListener('scroll', _handleScroll);
-//     return () => window.removeEventListener('scroll', _handleScroll);
-//   });
+        <input
+          {...register('email', {
+            required: true,
+            pattern:
+              /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/,
+          })}
+          className={classNames(
+            'w-full sm:w-auto rounded-md border-2 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
+            'transition-all focus:border-neutral-500 focus:scale-105'
+          )}
+          placeholder="Your Email *"
+          type="email"
+        />
 
-//   return (
-//     <Section ref={contactRef} id={id}>
-//       <div className="container relative px-9 w-full sm:w-1/2 md:flex md:flex-col">
-//         <h1 className="mb-2">Contact Me</h1>
+        <input
+          {...register('subject', {
+            required: true,
+          })}
+          className={classNames(
+            'w-full sm:w-auto rounded-md border-2 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
+            'transition-all focus:border-neutral-500 focus:scale-105'
+          )}
+          placeholder="Your Subject *"
+          type="text"
+        />
 
-//         <input
-//           {...register('name', {
-//             required: true,
-//           })}
-//           className={classNames(
-//             'w-full sm:w-auto rounded-md border-2 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
-//             'transition-all focus:border-neutral-500 focus:scale-105'
-//           )}
-//           placeholder="Your Name *"
-//           type="text"
-//         />
+        <textarea
+          {...register('message', {
+            required: true,
+          })}
+          className={classNames(
+            'w-full sm:w-auto rounded-md border-2 h-32 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
+            'transition-all focus:border-neutral-500 focus:scale-105'
+          )}
+          placeholder="Your Message *"
+        />
 
-//         <input
-//           {...register('email', {
-//             required: true,
-//             pattern:
-//               /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/,
-//           })}
-//           className={classNames(
-//             'w-full sm:w-auto rounded-md border-2 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
-//             'transition-all focus:border-neutral-500 focus:scale-105'
-//           )}
-//           placeholder="Your Email *"
-//           type="email"
-//         />
+        <button
+          className={classNames(
+            'text-white text-lg',
+            'bg-vibrant-red self-baseline mt-2 py-2 px-8 rounded-md border-vibrant-red border-2',
+            'transition-all duration-300 ease-in-out hover:bg-transparent hover:-translate-y-1'
+          )}
+          onClick={handleSubmit(onSubmit)}
+        >
+          SUBMIT
+        </button>
 
-//         <input
-//           {...register('subject', {
-//             required: true,
-//           })}
-//           className={classNames(
-//             'w-full sm:w-auto rounded-md border-2 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
-//             'transition-all focus:border-neutral-500 focus:scale-105'
-//           )}
-//           placeholder="Your Subject *"
-//           type="text"
-//         />
+        <Transition
+          className="bg-white rounded-lg mt-2 p-4"
+          show={status ? true : false}
+          enter="transition-all duration-300"
+          enterFrom="h-0"
+          enterTo="h-full"
+          leave="transition-all duration-300"
+          leaveFrom="h-full"
+          leaveTo="h-0"
+        >
+          {status}
+        </Transition>
+      </div>
+    </Section>
+  );
+});
 
-//         <textarea
-//           {...register('message', {
-//             required: true,
-//           })}
-//           className={classNames(
-//             'w-full sm:w-auto rounded-md border-2 h-32 border-neutral-600 bg-transparent p-2 my-2 text-white outline-none',
-//             'transition-all focus:border-neutral-500 focus:scale-105'
-//           )}
-//           placeholder="Your Message *"
-//         />
-
-//         <button
-//           className={classNames(
-//             'text-white text-lg',
-//             'bg-vibrant-red self-baseline mt-2 py-2 px-8 rounded-md border-vibrant-red border-2',
-//             'transition-all duration-300 ease-in-out hover:bg-transparent hover:-translate-y-1'
-//           )}
-//           onClick={handleSubmit(onSubmit)}
-//         >
-//           SUBMIT
-//         </button>
-
-//         <Transition
-//           className="bg-white rounded-lg mt-2 p-4"
-//           show={status ? true : false}
-//           enter="transition-all duration-300"
-//           enterFrom="h-0"
-//           enterTo="h-full"
-//           leave="transition-all duration-300"
-//           leaveFrom="h-full"
-//           leaveTo="h-0"
-//         >
-//           {status}
-//         </Transition>
-//       </div>
-//     </Section>
-//   );
-// }
+Contact.displayName = 'Contact';
 
 export default Home;
