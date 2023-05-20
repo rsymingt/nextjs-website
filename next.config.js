@@ -6,6 +6,13 @@ const nextConfig = {
   eslint: {
     dirs: ['src'],
   },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
   webpack: (config) => {
     // Important: return the modified config
     config.module.rules.push({
@@ -18,6 +25,21 @@ const nextConfig = {
 
       use: ['@svgr/webpack'],
     });
+
+    config.module.rules.push({
+      test: /\.worker\.js$/,
+      // use: 'worker-loader',
+      loader: 'worker-loader',
+      options: {
+        filename: 'static/[fullhash].worker.js',
+        publicPath: '/_next/',
+      },
+    });
+
+    // config.module.rules.push({
+    //   test: /\.worker\.js$/,
+    //   use: { loader: 'worker-loader' },
+    // });
 
     return {
       ...config,

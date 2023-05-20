@@ -31,20 +31,24 @@ a {
   @apply items-center justify-between max-w-full;
 }
 
-#main .section h1,
+/* #main .section h1,
 h2,
 h3,
 h4 {
   @apply text-white;
-}
+} */
 
-#main .section:nth-child(even) {
+/* #main .section:nth-child(even) {
   @apply bg-neutral-900;
 }
 
 #main .section:nth-child(odd) {
   @apply bg-light-black;
 }
+
+#main .section:first-child {
+  background: transparent !important;
+} */
 
 #main {
   @apply font-montserrat;

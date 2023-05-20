@@ -28,6 +28,7 @@ import scrollIntoViewWithInterupt from '../utils/scrollIntoViewWithInterrupt';
 import { Transition } from '@headlessui/react';
 import { useForm } from 'react-hook-form';
 import { ContactData } from './api/contact';
+import Fractal from '../components/Fractal';
 
 const navigation: Navigation = [
   { name: 'Home', href: '#Home' },
@@ -148,6 +149,7 @@ const Home: NextPage = () => {
         navigation={navigation}
       />
       <div className="">
+        <Fractal />
         <Intro ref={(el) => (navRefs.current[0] = el)} />
         <About ref={(el) => (navRefs.current[1] = el)} />
         <Portfolio ref={(el) => (navRefs.current[2] = el)} />
@@ -159,7 +161,7 @@ const Home: NextPage = () => {
 };
 
 const Intro = forwardRef<HTMLElement>(({}, ref) => (
-  <Section ref={ref} className="flex relative">
+  <Section ref={ref} className="flex relative bg-transparent">
     <div className="container grid lg:grid-cols-3 w-full px-9">
       <div className="w-fit mx-auto col-span-2 text-white z-20 text-left">
         <h1>
@@ -179,20 +181,19 @@ const Intro = forwardRef<HTMLElement>(({}, ref) => (
         </h1>
       </div>
       <div className="col-span-1">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 flex flex-row">
+          <Fractal />
           <Image
             className={classNames(
               'intro-img',
               'grayscale opacity-90',
-              'gradient-mask-l-0'
+              'gradient-mask-l-50'
             )}
-            objectFit="cover"
-            layout="fill"
+            fill={true}
             src={MeJPG}
             alt="Ryan Symington"
             placeholder="blur"
             quality={50}
-            objectPosition="right"
           />
         </div>
       </div>
