@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["webworker", "dom", "dom.iterable", "esnext"],
+    "lib": [
+      "webworker",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,15 +20,15 @@
     "jsx": "preserve",
     "incremental": true,
     "types": [
-        "node",
-        "custom"
+      "node",
+      "custom"
     ],
     "typeRoots": [
-        "node_modules/@types",
-        "./typings"
+      "node_modules/@types",
+      "./typings"
     ]
   },
   // "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/worker/fractal.worker.js"],
-  "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx", ],
-  "exclude": ["node_modules", "typings/**/*.ts"]
+  // "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx", ],
+  // "exclude": ["node_modules", "typings/**/*.ts"]
 }

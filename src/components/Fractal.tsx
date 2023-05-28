@@ -3,7 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 // TODO: this is not working... fix!
-import FractalWorker from 'worker-loader!../worker/fractal.worker';
+const FractalWorker = require('../worker/fractal.worker').default;
 // import FractalWorker from '../worker/fractal.worker';
 // import GifWorker from './gif.worker';
 
@@ -61,7 +61,6 @@ const Fractal = () => {
 
     // console.log(imports);
 
-    console.log('FRACTAL', fractalWorker);
 
     // const fractalWorker = new Worker(
     //   new URL('../worker/fractal.worker.js', import.meta.url)
@@ -99,13 +98,10 @@ const Fractal = () => {
 
     fractalWorker.postMessage(config);
     fractalWorker.onmessage = (e: MessageEvent) => {
-      console.log(e);
-
       if (previousAnimationFrameHandle) {
         cancelAnimationFrame(previousAnimationFrameHandle);
       }
 
-      console.log(e);
 
       // eslint-disable-next-line complexity
       previousAnimationFrameHandle = requestAnimationFrame(() => {
@@ -128,7 +124,6 @@ const Fractal = () => {
 
             ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
             if (Date.now() - time > config.gifDelay) {
-              console.log('yep');
               // gifWorkerManager.postMessage({
               //   image: ctx.getImageData(0, 0, canvas.width, canvas.height).data,
               //   config: config,
