@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 // TODO: this is not working... fix!
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const FractalWorker = require('../worker/fractal.worker').default;
 // import FractalWorker from '../worker/fractal.worker';
 // import GifWorker from './gif.worker';
