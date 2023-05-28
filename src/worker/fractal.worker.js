@@ -379,7 +379,6 @@ async function fractalService(workers, config) {
 }
 
 self.onmessage = async (e) => {
-  console.log('TEST');
   // eslint-disable-line no-restricted-globals
   if (!e) {
     return;

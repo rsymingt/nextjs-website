@@ -10,7 +10,7 @@ const FractalWorker = require('../worker/fractal.worker').default;
 
 // import BranchWorker from '../worker/branch.worker';
 
-// let bitmapURL = null;
+// let bitmapURL = null; 
 let ctx: CanvasRenderingContext2D | null;
 // let gif;
 let time = Date.now();
@@ -48,7 +48,7 @@ const Fractal = () => {
 
     window.addEventListener('resize', updateContainer);
 
-    return window.removeEventListener('resize', updateContainer);
+    return () => window.removeEventListener('resize', updateContainer);
   }, [updateContainer]);
 
   useEffect(() => {
