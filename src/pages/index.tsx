@@ -149,7 +149,6 @@ const Home: NextPage = () => {
         navigation={navigation}
       />
       <div className="">
-        <Fractal />
         <Intro ref={(el) => (navRefs.current[0] = el)} />
         <About ref={(el) => (navRefs.current[1] = el)} />
         <Portfolio ref={(el) => (navRefs.current[2] = el)} />

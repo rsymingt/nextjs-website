@@ -2,7 +2,9 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
+// TODO: this is not working... fix!
 import FractalWorker from 'worker-loader!../worker/fractal.worker';
+// import FractalWorker from '../worker/fractal.worker';
 // import GifWorker from './gif.worker';
 
 // import BranchWorker from '../worker/branch.worker';
@@ -50,6 +52,16 @@ const Fractal = () => {
 
   useEffect(() => {
     const fractalWorker = new FractalWorker();
+    // const imports = new URL('../../public/fractal.worker.js', import.meta.url);
+    // const fractalWorker = new Worker(
+    //   // new URL('../../public/fractal.worker', import.meta.url)
+    //   imports
+    //   // '/fractal.worker.js'
+    // );
+
+    // console.log(imports);
+
+    console.log('FRACTAL', fractalWorker);
 
     // const fractalWorker = new Worker(
     //   new URL('../worker/fractal.worker.js', import.meta.url)
@@ -87,9 +99,13 @@ const Fractal = () => {
 
     fractalWorker.postMessage(config);
     fractalWorker.onmessage = (e: MessageEvent) => {
+      console.log(e);
+
       if (previousAnimationFrameHandle) {
         cancelAnimationFrame(previousAnimationFrameHandle);
       }
+
+      console.log(e);
 
       // eslint-disable-next-line complexity
       previousAnimationFrameHandle = requestAnimationFrame(() => {

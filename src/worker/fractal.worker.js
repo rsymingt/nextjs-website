@@ -378,7 +378,8 @@ async function fractalService(workers, config) {
   // ctx.closePath();
 }
 
-onmessage = async (e) => {
+self.onmessage = async (e) => {
+  console.log('TEST');
   // eslint-disable-line no-restricted-globals
   if (!e) {
     return;
@@ -393,5 +394,3 @@ onmessage = async (e) => {
 
   await fractalService(workers, e.data);
 };
-
-module.exports = {};
