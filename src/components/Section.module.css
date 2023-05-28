@@ -1,14 +1,13 @@
-
 .section {
-    min-height: calc(100vh + 64px);
-    /* max-height: calc(100vh + 64px); */
-    @apply items-center justify-between max-w-full pt-16 pb-8 bg-transparent;
+  min-height: calc(100vh + 64px);
+  /* max-height: calc(100vh + 64px); */
+  @apply items-center justify-between max-w-full pt-16 pb-8 bg-transparent;
 }
 
 .section:nth-child(2n+1) {
   @apply bg-neutral-900 text-white;
 }
 
-.section:nth-child(odd) {
+.section:nth-child(2n+2) {
   @apply bg-light-black text-white;
 }
